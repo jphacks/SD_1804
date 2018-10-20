@@ -93,6 +93,30 @@ exports.takeOutPost = functions.https.onRequest((req, res) => {
             admin.database().ref(`/users/${id}/images`).update({
                 [`${k}/inInbox`]: false
             })
+                .catch(error => {
+                    res.status(404).send({ message: 'Not Found' })
+                })
+        });
+        res.status(200).send('SUCCESS！');
+    })
+        .catch(error => {
+            res.status(404).send({ message: 'Not Found' })
+        })
+});
+
+exports.randomTakeInPost = functions.https.onRequest((req, res) => {
+    // Grab the text parameter.
+    const id = req.query.id;
+    // Push the new message into the Realtime Database using the Firebase Admin SDK.
+    return admin.database().ref(`/users/${id}/images`).once('value').then(data => {
+        const obj = data.val();
+        Object.keys(obj).forEach(function (k) {
+            admin.database().ref(`/users/${id}/images`).update({
+                [`${k}/inInbox`]: Math.floor(Math.random() * 2 + 1) === 1 ? true : false
+            })
+                .catch(error => {
+                    res.status(404).send({ message: 'Not Found' })
+                })
         });
         res.status(200).send('SUCCESS！');
     })
