@@ -69,7 +69,7 @@
                                     <segment title="Second"/>
                                 </segments>
                                 <connections>
-                                    <action selector="selectedSwitch:" destination="oMb-ae-z6r" eventType="valueChanged" id="90j-3I-vhf"/>
+                                    <action selector="selectedSwitch:" destination="oMb-ae-z6r" eventType="valueChanged" id="mwG-HF-SkI"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
@@ -87,7 +87,6 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="B1n-hg-lch" id="lfs-Qv-kme"/>
-                        <outlet property="segmentedControl" destination="50I-cB-XwJ" id="yFk-jN-5T8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpm-n0-dht" userLabel="First Responder" sceneMemberID="firstResponder"/>

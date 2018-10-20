@@ -8,16 +8,10 @@
 
 import UIKit
 
-enum ViewController: String{
-    case HomeViewController
-    case MailListViewController
-    case SearchViewController
-    case DetailViewController
-}
-
-extension UIViewController {
-    static func instantiate(with storyboard: ViewController) -> UIViewController {
-        let storyboard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
-        return storyboard.instantiateInitialViewController()!
+enum ViewController {
+    static func instantiate<ViewController: UIViewController>(_ type: ViewController.Type) -> ViewController {
+        let name = String(describing: ViewController.self)
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        return storyboard.instantiateInitialViewController() as! ViewController
     }
 }

@@ -9,19 +9,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="yjR-qK-70f">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DkP-v4-BZF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DkP-v4-BZF" customClass="DetailViewController" customModule="NoName" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5bD-Jv-tWS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7zC-Q5-esQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7zC-Q5-esQ" secondAttribute="height" multiplier="1:1" id="d1y-85-Y7r"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wT6-iA-3NQ">
+                                <rect key="frame" x="20" y="415" width="45" height="17"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7zC-Q5-esQ" firstAttribute="top" secondItem="5MK-CJ-BbA" secondAttribute="top" id="3ba-LB-cs5"/>
+                            <constraint firstItem="wT6-iA-3NQ" firstAttribute="leading" secondItem="5MK-CJ-BbA" secondAttribute="leading" constant="20" id="MjR-dJ-UfT"/>
+                            <constraint firstItem="7zC-Q5-esQ" firstAttribute="leading" secondItem="5MK-CJ-BbA" secondAttribute="leading" id="OAO-zJ-mmc"/>
+                            <constraint firstItem="wT6-iA-3NQ" firstAttribute="top" secondItem="7zC-Q5-esQ" secondAttribute="bottom" constant="20" id="blf-fu-qr9"/>
+                            <constraint firstItem="5MK-CJ-BbA" firstAttribute="trailing" secondItem="7zC-Q5-esQ" secondAttribute="trailing" id="g4u-iX-oBB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5MK-CJ-BbA"/>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="wT6-iA-3NQ" id="44G-Fa-jM7"/>
+                        <outlet property="mailImageView" destination="7zC-Q5-esQ" id="EVK-GN-O4S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSK-rc-cz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="46" y="25"/>
         </scene>
     </scenes>
 </document>

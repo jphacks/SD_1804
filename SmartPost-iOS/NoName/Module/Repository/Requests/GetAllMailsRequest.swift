@@ -11,21 +11,24 @@ import Alamofire
 
 extension APIRequests {
     struct GetAllMailsRequest {
+        let userId: Int
     }
 }
 
 extension APIRequests.GetAllMailsRequest: APIRequest {
-    typealias Response = [Mail]
+    typealias Response = [String: Mail]
 
     var method: HTTPMethod {
         return .get
     }
 
     var path: String {
-        return "" // TODO
+        return "/getImages"
     }
 
     var parameters: Parameters? {
-        return nil // TODO
+        return [
+            "id": userId
+        ]
     }
 }

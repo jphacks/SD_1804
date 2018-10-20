@@ -21,6 +21,7 @@
 		6E107D74217ADD410012E68D /* GetAllMailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D73217ADD410012E68D /* GetAllMailsRequest.swift */; };
 		6E107D76217ADDDE0012E68D /* MailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D75217ADDDE0012E68D /* MailRepository.swift */; };
 		6E107D78217ADE450012E68D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D77217ADE450012E68D /* AppError.swift */; };
+		6E107D7B217AED4F0012E68D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D7A217AED4F0012E68D /* R.generated.swift */; };
 		8FE70C9D167F160AA2D6AB7F /* Pods_NoName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B403CE112DC6B59BC4390F /* Pods_NoName.framework */; };
 		98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270400217A3EB400BA3C21 /* AppDelegate.swift */; };
 		98270406217A3EB400BA3C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98270404217A3EB400BA3C21 /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		6E107D73217ADD410012E68D /* GetAllMailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMailsRequest.swift; sourceTree = "<group>"; };
 		6E107D75217ADDDE0012E68D /* MailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailRepository.swift; sourceTree = "<group>"; };
 		6E107D77217ADE450012E68D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		6E107D7A217AED4F0012E68D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		81725C99A4813ED87D7C7823 /* Pods_NoNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		982703FD217A3EB400BA3C21 /* NoName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98270400217A3EB400BA3C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		982703FF217A3EB400BA3C21 /* NoName */ = {
 			isa = PBXGroup;
 			children = (
+				6E107D7A217AED4F0012E68D /* R.generated.swift */,
 				98270441217AB83400BA3C21 /* Module */,
 				98270432217A445100BA3C21 /* Resources */,
 				98270400217A3EB400BA3C21 /* AppDelegate.swift */,
@@ -359,6 +362,7 @@
 			buildConfigurationList = 98270428217A3EB500BA3C21 /* Build configuration list for PBXNativeTarget "NoName" */;
 			buildPhases = (
 				AAE73AB294756424CCBA4FE2 /* [CP] Check Pods Manifest.lock */,
+				6E107D79217AED330012E68D /* R.swift */,
 				982703F9217A3EB400BA3C21 /* Sources */,
 				982703FA217A3EB400BA3C21 /* Frameworks */,
 				982703FB217A3EB400BA3C21 /* Resources */,
@@ -543,6 +547,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6E107D79217AED330012E68D /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"\n";
+		};
 		AAE73AB294756424CCBA4FE2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -597,6 +619,7 @@
 				6E107D6A217AD0A70012E68D /* APIClient.swift in Sources */,
 				98270409217A3EB400BA3C21 /* NoName.xcdatamodeld in Sources */,
 				6E107D71217ADC9D0012E68D /* Log.swift in Sources */,
+				6E107D7B217AED4F0012E68D /* R.generated.swift in Sources */,
 				6E107D6D217AD98E0012E68D /* APIConfiguration.swift in Sources */,
 				98270443217ABC5200BA3C21 /* Storyboard.swift in Sources */,
 				98270440217AB70800BA3C21 /* UIView.swift in Sources */,
@@ -779,6 +802,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = NoName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -797,6 +821,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = NoName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

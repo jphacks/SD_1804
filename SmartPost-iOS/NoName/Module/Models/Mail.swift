@@ -7,13 +7,21 @@
 //
 
 import Foundation
-
+import UIKit
 struct Mail: Codable {
     enum `Type` {
         case unknown
     }
 
-    let date: Date
-    let imageUrl: String
+    let date: String
+    let from: String
+    let name: String
+    private let src: String
+    let time: String
     let type: String
+    let isInbox: Bool = true
+    var image: UIImage? {
+        guard let data = Data(base64Encoded: src) else { return nil }
+        return UIImage(data: data)
+    }
 }
