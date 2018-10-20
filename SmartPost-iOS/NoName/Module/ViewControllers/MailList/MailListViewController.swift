@@ -7,15 +7,17 @@
 //
 
 import UIKit
-
+import Blueprints
 class MailListViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+    @IBOutlet weak var collectionView:UICollectionView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     let samples = ["test1","test2","test3","test4","test5","test6","test7","test8","test9","test10","test11","test12"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -24,13 +26,26 @@ class MailListViewController: UIViewController,UICollectionViewDelegate,UICollec
         let imageView = test.contentView.viewWithTag(1) as! UIImageView
         let cellImage = UIImage(named: samples[indexPath.row])
         imageView.image = cellImage
+        
+        let label = test.contentView.viewWithTag(2) as! UILabel
+        label.text = "sample"
+        
         return test
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return samples.count
     }
-
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     private func setupUI() {
-        
+        let size = view.frame.width/3.0
+        let blueprintLayout = VerticalBlueprintLayout(
+            itemsPerRow: 3.0,
+            itemSize: CGSize(width: size, height: size),
+            minimumInteritemSpacing: 10,
+            minimumLineSpacing: 10
+        )
+        collectionView.collectionViewLayout = blueprintLayout
     }
 }
