@@ -33,7 +33,7 @@ class SearchViewController: UIViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let test:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
         let imageView = test.contentView.viewWithTag(1) as! UIImageView
-        let cellImage = filteredMails.value[indexPath.row].image
+        let cellImage = filteredMails.value[indexPath.row].image1
         imageView.image = cellImage
         
         let label = test.contentView.viewWithTag(2) as! UILabel
