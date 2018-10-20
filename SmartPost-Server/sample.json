@@ -5,6 +5,7 @@
         "A",
         "B"
     ],
+    "src" : "test",
     "million": false,
     "releasedAt": "2018-05-01"
 }
