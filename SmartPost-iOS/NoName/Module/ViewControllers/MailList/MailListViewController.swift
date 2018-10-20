@@ -68,6 +68,13 @@ class MailListViewController: UIViewController {
 
     private func fetch() {
         repository.fetchAllMails()
+            .do(onCompleted: { [weak self] in
+                self?.stopLoading()
+                print("stop")
+            }, onSubscribed: { [weak self] in
+                self?.startLoading()
+                print("start")
+            })
             .bind(to: fetchedMails)
             .disposed(by: disposeBag)
     }
