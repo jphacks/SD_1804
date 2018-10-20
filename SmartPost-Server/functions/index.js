@@ -65,7 +65,7 @@ exports.addImages = functions.https.onRequest((req, res) => {
     const from = 'amazon';
     const name = 'mac';
     const src = req.body.src;
-    const inInbox = "True";
+    const inInbox = true;
     const type = req.body.type;
 
     // Push the new message into the Realtime Database using the Firebase Admin SDK.
@@ -79,7 +79,8 @@ exports.addImages = functions.https.onRequest((req, res) => {
         type
     }).then((snapshot) => {
         // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
-        return res.redirect(303, snapshot.ref.toString());
+        // return res.redirect(303, snapshot.ref.toString());
+        return res.status(200).send('SUCCESS！');
     });
 });
 
