@@ -14,6 +14,7 @@ import RxCocoa
 class MailListViewController: UIViewController {
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    private let refreshControl = UIRefreshControl()
 
     private let selectedIndex = BehaviorRelay<Int>(value: 0)
     private let fetchedMails = BehaviorRelay<[Mail]>(value: [])
@@ -46,6 +47,8 @@ class MailListViewController: UIViewController {
             minimumLineSpacing: 10
         )
         collectionView.collectionViewLayout = blueprintLayout
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
         
         Observable.merge(
             selectedIndex.asObservable(),
@@ -66,14 +69,13 @@ class MailListViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
 
-    private func fetch() {
+    @objc private func fetch() {
         repository.fetchAllMails()
             .do(onCompleted: { [weak self] in
                 self?.stopLoading()
-                print("stop")
+                self?.refreshControl.endRefreshing()
             }, onSubscribed: { [weak self] in
                 self?.startLoading()
-                print("start")
             })
             .bind(to: fetchedMails)
             .disposed(by: disposeBag)
