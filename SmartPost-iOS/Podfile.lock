@@ -4,6 +4,7 @@ PODS:
   - NVActivityIndicatorView (4.4.0):
     - NVActivityIndicatorView/Presenter (= 4.4.0)
   - NVActivityIndicatorView/Presenter (4.4.0)
+  - PINCache (2.3)
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - Alamofire
   - Blueprints
   - NVActivityIndicatorView
+  - PINCache
   - R.swift
   - RxCocoa
   - RxSwift
@@ -26,6 +28,7 @@ SPEC REPOS:
     - Alamofire
     - Blueprints
     - NVActivityIndicatorView
+    - PINCache
     - R.swift
     - R.swift.Library
     - RxCocoa
@@ -36,12 +39,13 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Blueprints: bd8e23ee3b1ee9faa751ddb6e9cd82fef862ce9a
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
+  PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: b6097efedd0f9107a7b834179f5299ec0c52285b
+PODFILE CHECKSUM: 1b20441b4928be97bc84b02d3057f1109e095fc7
 
 COCOAPODS: 1.5.3

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Mail {
+struct Mail: Codable {
     enum `Type` {
         case unknown
     }
@@ -23,6 +23,30 @@ struct Mail {
         self.time = time
         self.type = type
         self.inInbox = inInbox
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case date
+        case from
+        case name
+        case src1
+        case src2
+        case time
+        case type
+        case inInbox
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(date, forKey: .date)
+        try container.encode(from, forKey: .from)
+        try container.encode(name, forKey: .name)
+        try container.encode(src1, forKey: .src1)
+        try container.encode(src2, forKey: .src2)
+        try container.encode(time, forKey: .time)
+        try container.encode(type, forKey: .type)
+        try container.encode(type, forKey: .type)
+        try container.encode(inInbox, forKey: .inInbox)
     }
 
     let date: String
@@ -44,5 +68,16 @@ struct Mail {
     }
 }
 
-extension Mail: Codable {
+extension Mail {
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        date = try values.decode(String.self, forKey: .date)
+        from = try values.decode(String.self, forKey: .from)
+        name = try values.decode(String.self, forKey: .name)
+        src1 = try values.decode(String.self, forKey: .src1)
+        src2 = try values.decode(String.self, forKey: .src2)
+        time = try values.decode(String.self, forKey: .time)
+        type = try values.decode(String.self, forKey: .type)
+        inInbox = try values.decode(Bool.self, forKey: .inInbox)
+    }
 }

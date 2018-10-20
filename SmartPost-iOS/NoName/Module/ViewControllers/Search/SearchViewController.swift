@@ -54,7 +54,7 @@ class SearchViewController: UIViewController{
                     self?.collectionView.reloadData()
                 },
                 onError: { error in
-                    print(error)
+                    debugLog(error, level: .error)
             }).disposed(by: disposeBag)
     }
     private func setupSearch(){
@@ -65,14 +65,9 @@ class SearchViewController: UIViewController{
             .debounce(confirmTextTime,scheduler: MainScheduler.instance)
             .withLatestFrom(fetchedMails){($0,$1)}
             .map{ (str,mails) -> [Mail] in
-                print(str)
-                mails.forEach {
-                    print($0.name, $0.date)
-                }
                 return mails.filter{$0.name.contains(str) || $0.date == str}
             }
             .subscribe(onNext:{ [weak self] in
-                print($0)
                 self?.filteredMails.accept($0)
                 self?.collectionView.reloadData()
             }).disposed(by: disposeBag)
@@ -80,10 +75,12 @@ class SearchViewController: UIViewController{
     }
     @objc private func fetch() {
         repository.fetchAllMails()
-            .do(onCompleted: { [weak self] in
-                self?.stopLoading()
-                self?.refreshControl.endRefreshing()
-                }, onSubscribed: { [weak self] in
+            .do(
+                onCompleted: { [weak self] in
+                    self?.stopLoading()
+                    self?.refreshControl.endRefreshing()
+                },
+                onSubscribed: { [weak self] in
                     self?.startLoading()
             })
             .bind(to: fetchedMails)
