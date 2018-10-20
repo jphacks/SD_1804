@@ -11,8 +11,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar:UISearchBar!
+    private let refreshControl = UIRefreshControl()
+    
     private let selectedIndex = BehaviorRelay<Int>(value: 0)
     private let fetchedMails = BehaviorRelay<[Mail]>(value: [])
     private var filteredMails = BehaviorRelay<[Mail]>(value: [])
@@ -24,59 +27,96 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         fetch()
+        setupSearch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let test:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
-        let imageView = test.contentView.viewWithTag(1) as! UIImageView
-        let cellImage = filteredMails.value[indexPath.row].image1
-        imageView.image = cellImage
-        
-        let label = test.contentView.viewWithTag(2) as! UILabel
-        label.text = filteredMails.value[indexPath.row].date
-        
-        return test
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredMails.value.count
-    }
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+
     private func setupUI() {
-        let size = view.frame.width/3.0
+        title = "検索"
+        let width = view.frame.width
         let blueprintLayout = VerticalBlueprintLayout(
-            itemsPerRow: 3.0,
-            itemSize: CGSize(width: size, height: size),
-            minimumInteritemSpacing: 10,
-            minimumLineSpacing: 10
+            itemsPerRow: 1.0,
+            itemSize: CGSize(width: width, height: width/2),
+            minimumInteritemSpacing: 5.0,
+            minimumLineSpacing: 5.0
         )
         collectionView.collectionViewLayout = blueprintLayout
+        collectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
         
-        selectedIndex
-            .map { [fetchedMails] index in
-                fetchedMails.value.filter { _ in index == 0 }
+            fetchedMails
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.filteredMails.accept($0)
+                    self?.collectionView.reloadData()
+                },
+                onError: { error in
+                    print(error)
+            }).disposed(by: disposeBag)
+    }
+    private func setupSearch(){
+        let confirmTextTime = 1.0
+        self.searchBar.rx
+            .text
+            .orEmpty
+            .debounce(confirmTextTime,scheduler: MainScheduler.instance)
+            .withLatestFrom(fetchedMails){($0,$1)}
+            .map{ (str,mails) -> [Mail] in
+                print(str)
+                mails.forEach {
+                    print($0.name, $0.date)
+                }
+                return mails.filter{$0.name.contains(str) || $0.date == str}
             }
-            .subscribe(onNext: { [filteredMails] in
-                filteredMails.accept($0)
-            })
-            .disposed(by: disposeBag)
-    }
-    private func showInBox(){
+            .subscribe(onNext:{ [weak self] in
+                print($0)
+                self?.filteredMails.accept($0)
+                self?.collectionView.reloadData()
+            }).disposed(by: disposeBag)
         
     }
-    private func showOutBox(){
-        
-    }
-    
-    
-    private func fetch() {
+    @objc private func fetch() {
         repository.fetchAllMails()
+            .do(onCompleted: { [weak self] in
+                self?.stopLoading()
+                self?.refreshControl.endRefreshing()
+                }, onSubscribed: { [weak self] in
+                    self?.startLoading()
+            })
             .bind(to: fetchedMails)
             .disposed(by: disposeBag)
     }
+
 }
+extension SearchViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let test: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
+        let imageView1 = test.contentView.viewWithTag(1) as! UIImageView
+        let imageView2 = test.contentView.viewWithTag(2) as! UIImageView
+        let titleLabel = test.contentView.viewWithTag(3) as! UILabel
+        let mail = filteredMails.value[indexPath.row]
+        imageView1.image = mail.image1
+        imageView2.image = mail.image2
+        titleLabel.text = mail.name
+        
+        return test
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return filteredMails.value.count
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailViewController.make(mail: filteredMails.value[indexPath.item])
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+
