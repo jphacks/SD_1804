@@ -14,6 +14,13 @@
 		6E107D64217AC8720012E68D /* MailListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E107D63217AC8720012E68D /* MailListViewController.storyboard */; };
 		6E107D66217AC8990012E68D /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E107D65217AC8990012E68D /* DetailViewController.storyboard */; };
 		6E107D68217AC9D10012E68D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D67217AC9D10012E68D /* SearchViewController.swift */; };
+		6E107D6A217AD0A70012E68D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D69217AD0A70012E68D /* APIClient.swift */; };
+		6E107D6D217AD98E0012E68D /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D6C217AD98E0012E68D /* APIConfiguration.swift */; };
+		6E107D6F217ADBC50012E68D /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D6E217ADBC50012E68D /* APIRequest.swift */; };
+		6E107D71217ADC9D0012E68D /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D70217ADC9D0012E68D /* Log.swift */; };
+		6E107D74217ADD410012E68D /* GetAllMailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D73217ADD410012E68D /* GetAllMailsRequest.swift */; };
+		6E107D76217ADDDE0012E68D /* MailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D75217ADDDE0012E68D /* MailRepository.swift */; };
+		6E107D78217ADE450012E68D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D77217ADE450012E68D /* AppError.swift */; };
 		8FE70C9D167F160AA2D6AB7F /* Pods_NoName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B403CE112DC6B59BC4390F /* Pods_NoName.framework */; };
 		98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270400217A3EB400BA3C21 /* AppDelegate.swift */; };
 		98270406217A3EB400BA3C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98270404217A3EB400BA3C21 /* Main.storyboard */; };
@@ -58,6 +65,13 @@
 		6E107D63217AC8720012E68D /* MailListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MailListViewController.storyboard; sourceTree = "<group>"; };
 		6E107D65217AC8990012E68D /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
 		6E107D67217AC9D10012E68D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6E107D69217AD0A70012E68D /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		6E107D6C217AD98E0012E68D /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
+		6E107D6E217ADBC50012E68D /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		6E107D70217ADC9D0012E68D /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		6E107D73217ADD410012E68D /* GetAllMailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllMailsRequest.swift; sourceTree = "<group>"; };
+		6E107D75217ADDDE0012E68D /* MailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailRepository.swift; sourceTree = "<group>"; };
+		6E107D77217ADE450012E68D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		81725C99A4813ED87D7C7823 /* Pods_NoNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		982703FD217A3EB400BA3C21 /* NoName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98270400217A3EB400BA3C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				6E107D56217AC4AF0012E68D /* Mail.swift */,
+				6E107D77217ADE450012E68D /* AppError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +172,26 @@
 				6E107D65217AC8990012E68D /* DetailViewController.storyboard */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		6E107D6B217AD0B50012E68D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				6E107D72217ADCBE0012E68D /* Requests */,
+				6E107D69217AD0A70012E68D /* APIClient.swift */,
+				6E107D6C217AD98E0012E68D /* APIConfiguration.swift */,
+				6E107D6E217ADBC50012E68D /* APIRequest.swift */,
+				6E107D75217ADDDE0012E68D /* MailRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		6E107D72217ADCBE0012E68D /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				6E107D73217ADD410012E68D /* GetAllMailsRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		96AC29DB109E60E31EF124F1 /* Frameworks */ = {
@@ -247,6 +282,7 @@
 				9827043D217AB6FB00BA3C21 /* UIStoryboard.swift */,
 				9827043F217AB70800BA3C21 /* UIView.swift */,
 				98270444217ABD7700BA3C21 /* UIViewController.swift */,
+				6E107D70217ADC9D0012E68D /* Log.swift */,
 			);
 			path = Extentiones;
 			sourceTree = "<group>";
@@ -262,6 +298,7 @@
 		98270441217AB83400BA3C21 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				6E107D6B217AD0B50012E68D /* Repository */,
 				6E107D55217AC4870012E68D /* Models */,
 				98270431217A444600BA3C21 /* ViewControllers */,
 				98270433217A447F00BA3C21 /* Extentiones */,
@@ -495,14 +532,21 @@
 			files = (
 				6E107D68217AC9D10012E68D /* SearchViewController.swift in Sources */,
 				6E107D57217AC4AF0012E68D /* Mail.swift in Sources */,
+				6E107D76217ADDDE0012E68D /* MailRepository.swift in Sources */,
+				6E107D6F217ADBC50012E68D /* APIRequest.swift in Sources */,
+				6E107D78217ADE450012E68D /* AppError.swift in Sources */,
 				6E107D60217AC6E20012E68D /* DetailViewController.swift in Sources */,
 				98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */,
 				6E107D5C217AC6AE0012E68D /* MailListViewController.swift in Sources */,
+				6E107D6A217AD0A70012E68D /* APIClient.swift in Sources */,
 				98270409217A3EB400BA3C21 /* NoName.xcdatamodeld in Sources */,
+				6E107D71217ADC9D0012E68D /* Log.swift in Sources */,
+				6E107D6D217AD98E0012E68D /* APIConfiguration.swift in Sources */,
 				98270443217ABC5200BA3C21 /* Storyboard.swift in Sources */,
 				98270440217AB70800BA3C21 /* UIView.swift in Sources */,
 				98270445217ABD7700BA3C21 /* UIViewController.swift in Sources */,
 				9827043E217AB6FB00BA3C21 /* UIStoryboard.swift in Sources */,
+				6E107D74217ADD410012E68D /* GetAllMailsRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
