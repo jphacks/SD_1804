@@ -19,3 +19,13 @@ cd functions
 npm run build
 npm run deploy
 ```
+
+## OCRを触る場合は
+api keyをbashで入力する必要があります  
+api keyにはgoogle cloud visionのapi keyが入ります
+```sh
+cd functions
+firebase functions:config:set vision.key="api key"
+npm run build
+npm run deploy
+```
