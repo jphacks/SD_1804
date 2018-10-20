@@ -14,6 +14,7 @@ target 'NoName' do
 	pod 'SnapKit' 
 	pod 'FlexiblePageControl'
   pod 'NVActivityIndicatorView'
+  pod 'PINCache'
 
   target 'NoNameTests' do
     inherit! :search_paths

@@ -8,14 +8,20 @@
 
 import Foundation
 import RxSwift
+import PINCache
 
 class MailRepository {
     private let api = APIClient(configuration: .default)
 
     func fetchAllMails() -> Observable<[Mail]> {
-        return api.response(from: APIRequests.GetAllMailsRequest(userId: 1))
+        let request = APIRequests.GetAllMailsRequest(userId: 1)
+
+        let cache = PINCache.shared().object(forKey: request.cacheKey) as? [Mail]
+
+        return api.response(from: request)
             .asObservable()
             .map { Array($0.values) }
+            .startWith(cache ?? [])
     }
 
     func search() {

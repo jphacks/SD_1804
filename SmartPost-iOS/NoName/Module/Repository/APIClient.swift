@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import Alamofire
+import PINCache
 
 class APIClient {
     let baseURL: URL
@@ -26,17 +27,24 @@ class APIClient {
                     .appendingPathComponent(request.path)
                     .appendingPathComponent(self.pathExtension)
 
-                let request = Alamofire.request(url, method: request.method, parameters: request.parameters,
+                let req = Alamofire.request(url, method: request.method, parameters: request.parameters,
                                                 encoding: request.encoding, headers: request.headers)
 
-                print(request.debugDescription)
+                debugLog(req.debugDescription)
 
-                request.response { response in
-                    print("Status: \(response.response?.statusCode ?? -1)")
+                req.response { response in
+                    debugLog("Status: \(response.response?.statusCode ?? -1)")
+
                     if let error = response.error { emitter(.error(error)) }
                     if let data = response.data {
                         do {
                             let response = try JSONDecoder().decode(Request.Response.self, from: data)
+
+                            // CACHE FIXME
+//                            if let nsCodingResponse = response as? NSCoding {
+//                                self.saveCache(request: request, response: nsCodingResponse)
+//                            }
+
                             emitter(.success(response))
                         } catch {
                             emitter(.error(error))
@@ -46,5 +54,10 @@ class APIClient {
                 }
                 return Disposables.create()
             }
+    }
+
+    private func saveCache<Request>(request: Request, response: NSCoding)
+        where Request: APIRequest {
+        PINCache.shared().setObject(response, forKey: request.cacheKey)
     }
 }

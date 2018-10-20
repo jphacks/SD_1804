@@ -10,10 +10,12 @@ import Blueprints
 import UIKit
 import RxSwift
 import RxCocoa
+import SnapKit
 
 class SearchViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar:UISearchBar!
+    private let searchFromDateButtonItem = UIBarButtonItem(title: "受取日時で絞り込み", style: .plain, target: nil, action: nil)
     private let refreshControl = UIRefreshControl()
     
     private let selectedIndex = BehaviorRelay<Int>(value: 0)
@@ -46,16 +48,24 @@ class SearchViewController: UIViewController{
         collectionView.collectionViewLayout = blueprintLayout
         collectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(fetch), for: .valueChanged)
-        
-            fetchedMails
+
+        setupDatePicker()
+
+        fetchedMails
             .subscribe(
                 onNext: { [weak self] in
                     self?.filteredMails.accept($0)
-                    self?.collectionView.reloadData()
                 },
                 onError: { error in
-                    print(error)
+                    debugLog(error, level: .error)
             }).disposed(by: disposeBag)
+
+        filteredMails
+            .subscribe(onNext: { [weak self] _ in
+                self?.collectionView.reloadData()
+            }).disposed(by: disposeBag)
+
+        navigationItem.rightBarButtonItem = searchFromDateButtonItem
     }
     private func setupSearch(){
         let confirmTextTime = 1.0
@@ -65,14 +75,9 @@ class SearchViewController: UIViewController{
             .debounce(confirmTextTime,scheduler: MainScheduler.instance)
             .withLatestFrom(fetchedMails){($0,$1)}
             .map{ (str,mails) -> [Mail] in
-                print(str)
-                mails.forEach {
-                    print($0.name, $0.date)
-                }
                 return mails.filter{$0.name.contains(str) || $0.date == str}
             }
             .subscribe(onNext:{ [weak self] in
-                print($0)
                 self?.filteredMails.accept($0)
                 self?.collectionView.reloadData()
             }).disposed(by: disposeBag)
@@ -80,14 +85,56 @@ class SearchViewController: UIViewController{
     }
     @objc private func fetch() {
         repository.fetchAllMails()
-            .do(onCompleted: { [weak self] in
-                self?.stopLoading()
-                self?.refreshControl.endRefreshing()
-                }, onSubscribed: { [weak self] in
+            .do(
+                onCompleted: { [weak self] in
+                    self?.stopLoading()
+                    self?.refreshControl.endRefreshing()
+                },
+                onSubscribed: { [weak self] in
                     self?.startLoading()
             })
             .bind(to: fetchedMails)
             .disposed(by: disposeBag)
+    }
+
+    private func setupDatePicker() {
+        let datePickerContainerView = UIView(frame: .zero)
+        datePickerContainerView.backgroundColor = .white
+        let datePicker = UIDatePicker(frame: .zero)
+        datePicker.datePickerMode = .date
+        let searchButton = UIButton(frame: .zero)
+        searchButton.rx.tap
+            .subscribe(onNext: {
+                datePickerContainerView.removeFromSuperview()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy/MM/dd"
+                let date = dateFormatter.string(from: datePicker.date)
+
+                let mailsByDate = self.fetchedMails.value
+                    .filter { $0.date == date }
+                self.filteredMails.accept(mailsByDate)
+            }).disposed(by: disposeBag)
+        searchButton.setTitle("検索", for: .normal)
+        searchButton.setTitleColor(.black, for: .normal)
+        datePickerContainerView.addSubview(datePicker)
+        datePickerContainerView.addSubview(searchButton)
+        searchButton.snp.makeConstraints {
+            $0.right.top.equalToSuperview()
+            $0.width.equalTo(60)
+            $0.height.equalTo(60)
+        }
+        datePicker.snp.makeConstraints {
+            $0.bottom.left.right.equalToSuperview()
+            $0.top.equalTo(searchButton.snp.top)
+        }
+        searchFromDateButtonItem.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                self.view.addSubview(datePickerContainerView)
+                datePickerContainerView.snp.makeConstraints {
+                    $0.bottom.right.left.equalToSuperview()
+                    $0.height.equalTo(200)
+                }
+            }).disposed(by: disposeBag)
     }
 
 }

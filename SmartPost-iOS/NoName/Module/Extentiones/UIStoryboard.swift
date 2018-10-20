@@ -21,13 +21,13 @@ enum ViewController {
 extension UIViewController: NVActivityIndicatorViewable {
     func startLoading() {
         DispatchQueue.main.async { [unowned self] in
-            self.startAnimating(CGSize(width: 40, height: 40), type: .lineScale)
+//            self.startAnimating(CGSize(width: 40, height: 40), type: .lineScale)
         }
     }
 
     func stopLoading() {
         DispatchQueue.main.async { [unowned self] in
-            self.stopAnimating()
+//            self.stopAnimating()
         }
     }
 }
