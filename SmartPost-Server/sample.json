@@ -6,6 +6,7 @@
         "B"
     ],
     "src" : "test",
+    "type": "jpg",
     "million": false,
     "releasedAt": "2018-05-01"
 }
