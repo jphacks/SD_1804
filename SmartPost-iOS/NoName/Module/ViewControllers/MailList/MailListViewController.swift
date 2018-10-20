@@ -9,10 +9,19 @@
 import UIKit
 import Blueprints
 class MailListViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-    @IBOutlet weak var collectionView:UICollectionView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    let samples = ["test1","test2","test3","test4","test5","test6","test7","test8","test9","test10","test11","test12"]
     
+    @IBOutlet weak var collectionView:UICollectionView!
+    @IBAction func selectedSwitch(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            
+        case 1:
+            
+        default:
+            
+        }
+    }
+    let samples = ["test1","test2","test3","test4","test5","test6","test7","test8","test9","test10","test11","test12"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -48,4 +57,13 @@ class MailListViewController: UIViewController,UICollectionViewDelegate,UICollec
         )
         collectionView.collectionViewLayout = blueprintLayout
     }
+    private func showInBox(){
+        fillteredMails.foreach(){
+            
+        }
+    }
+    private func showOutBox(){
+        
+    }
+    
 }
