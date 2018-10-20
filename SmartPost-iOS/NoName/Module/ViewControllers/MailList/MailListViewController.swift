@@ -43,8 +43,8 @@ class MailListViewController: UIViewController {
         let blueprintLayout = VerticalBlueprintLayout(
             itemsPerRow: 3.0,
             itemSize: CGSize(width: size, height: size),
-            minimumInteritemSpacing: 10,
-            minimumLineSpacing: 10
+            minimumInteritemSpacing: 5.0,
+            minimumLineSpacing: 5.0
         )
         collectionView.collectionViewLayout = blueprintLayout
         collectionView.refreshControl = refreshControl
@@ -63,9 +63,13 @@ class MailListViewController: UIViewController {
                     return mails.filter { !$0.inInbox }
                 }
             }
-            .subscribe(onNext: { [weak self] in
-                self?.filteredMails.accept($0)
-                self?.collectionView.reloadData()
+            .subscribe(
+                onNext: { [weak self] in
+                    self?.filteredMails.accept($0)
+                    self?.collectionView.reloadData()
+                },
+                onError: { error in
+                    print(error)
             }).disposed(by: disposeBag)
     }
 
