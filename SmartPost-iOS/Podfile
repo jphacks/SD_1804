@@ -12,6 +12,7 @@ target 'NoName' do
 	pod 'Blueprints'
 	pod 'Alamofire'
 	pod 'SnapKit' 
+	pod 'FlexiblePageControl'
   pod 'NVActivityIndicatorView'
 
   target 'NoNameTests' do

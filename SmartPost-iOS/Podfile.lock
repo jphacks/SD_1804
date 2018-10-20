@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.3)
   - Blueprints (0.8.0)
+  - FlexiblePageControl (1.0.7)
   - NVActivityIndicatorView (4.4.0):
     - NVActivityIndicatorView/Presenter (= 4.4.0)
   - NVActivityIndicatorView/Presenter (4.4.0)
@@ -15,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Blueprints
+  - FlexiblePageControl
   - NVActivityIndicatorView
   - R.swift
   - RxCocoa
@@ -25,6 +27,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Blueprints
+    - FlexiblePageControl
     - NVActivityIndicatorView
     - R.swift
     - R.swift.Library
@@ -35,6 +38,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Blueprints: bd8e23ee3b1ee9faa751ddb6e9cd82fef862ce9a
+  FlexiblePageControl: 2ce8446da3d75df6432dbad7b9e19151629dae62
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
@@ -42,6 +46,6 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: b6097efedd0f9107a7b834179f5299ec0c52285b
+PODFILE CHECKSUM: 763fa92a64a9117db1fed27f9fcae17c8c3ad064
 
 COCOAPODS: 1.5.3
