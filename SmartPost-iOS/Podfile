@@ -13,8 +13,8 @@ target 'NoName' do
 	pod 'Alamofire'
 	pod 'SnapKit' 
 	pod 'FlexiblePageControl'
-  pod 'NVActivityIndicatorView'
-  pod 'PINCache'
+ 	pod 'NVActivityIndicatorView'
+  	pod 'PINCache'
 
   target 'NoNameTests' do
     inherit! :search_paths
