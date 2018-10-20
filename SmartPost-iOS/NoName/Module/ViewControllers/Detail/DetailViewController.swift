@@ -18,7 +18,16 @@ class DetailViewController: UIViewController {
     }
 
     @IBOutlet private weak var mailImageView: UIImageView!
+    @IBOutlet private weak var flagLabel: UILabel! {
+        didSet {
+            flagLabel.layer.cornerRadius = flagLabel.frame.height / 2.0
+            flagLabel.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var fromLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+
     var mail: Mail!
 
     override func viewDidLoad() {
@@ -31,7 +40,9 @@ class DetailViewController: UIViewController {
     }
 
     private func setupUI(mail: Mail) {
-        mailImageView.image = UIImage(contentsOfFile: R.file.test10Png.fullName)
-        dateLabel.text = Date().description
+//        mailImageView.image = R.image
+        flagLabel.backgroundColor = mail.isInbox ? .red : .gray
+        flagLabel.text = mail.isInbox ? "未読" : "既読"
+        dateLabel.text = "\(mail.date) \(mail.time)"
     }
 }
