@@ -22,21 +22,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let vc1: MailListViewController = {
             let vc = ViewController.instantiate(MailListViewController.self)
-            vc.title = "一覧"
             vc.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+            vc.title = "マイポスト"
             return vc
         }()
         let vc2: SearchViewController = {
             let vc = ViewController.instantiate(SearchViewController.self)
-            vc.title = "検索"
             vc.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
+            vc.title = "検索"
             return vc
         }()
-        tabBarController.viewControllers = [vc1, vc2]
+        tabBarController.viewControllers = [
+            UINavigationController(rootViewController: vc1),
+            UINavigationController(rootViewController: vc2)
+        ]
 
-        window?.rootViewController = UINavigationController(
-            rootViewController: tabBarController
-        )
+        window?.rootViewController = tabBarController
 
         return true
     }}

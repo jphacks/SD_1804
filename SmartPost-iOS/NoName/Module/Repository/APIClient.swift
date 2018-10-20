@@ -32,6 +32,7 @@ class APIClient {
                 print(request.debugDescription)
 
                 request.response { response in
+                    print("Status: \(response.response?.statusCode ?? -1)")
                     if let error = response.error { emitter(.error(error)) }
                     if let data = response.data {
                         do {
