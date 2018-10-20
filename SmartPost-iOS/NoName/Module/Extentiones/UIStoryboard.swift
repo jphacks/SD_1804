@@ -20,14 +20,14 @@ enum ViewController {
 
 extension UIViewController: NVActivityIndicatorViewable {
     func startLoading() {
-        DispatchQueue.main.async { [unowned self] in
-//            self.startAnimating(CGSize(width: 40, height: 40), type: .lineScale)
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
     }
 
     func stopLoading() {
-        DispatchQueue.main.async { [unowned self] in
-//            self.stopAnimating()
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
 }
