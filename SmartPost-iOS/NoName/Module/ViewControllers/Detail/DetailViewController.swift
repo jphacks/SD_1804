@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
     }
 
     private func setupUI(mail: Mail) {
-        mailImageView.image = mail.image
+        mailImageView.image = mail.image1
         flagLabel.backgroundColor = mail.inInbox ? .red : .gray
         flagLabel.text = mail.inInbox ? "未読" : "既読"
         dateLabel.text = "\(mail.date) \(mail.time)"
