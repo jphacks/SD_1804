@@ -14,7 +14,6 @@ import RxCocoa
 class MailListViewController: UIViewController {
     @IBOutlet weak var collectionView:UICollectionView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    let samples = [Mail.init(date: "date", from: "hoge", name: "name", src: "src", time: "time", type: "type")]
 
     private let selectedIndex = BehaviorRelay<Int>(value: 0)
     private let fetchedMails = BehaviorRelay<[Mail]>(value: [])
@@ -34,13 +33,11 @@ class MailListViewController: UIViewController {
     }
     
     @IBAction func selectedSwitch(_ sender: UISegmentedControl) {
-        sender.rx.controlEvent(.valueChanged)
-            .map { sender.selectedSegmentIndex }
-            .bind(to: selectedIndex)
-            .disposed(by: disposeBag)
+        selectedIndex.accept(sender.selectedSegmentIndex)
     }
 
     private func setupUI() {
+        title = "マイポスト"
         let size = view.frame.width/3.0
         let blueprintLayout = VerticalBlueprintLayout(
             itemsPerRow: 3.0,
@@ -50,15 +47,23 @@ class MailListViewController: UIViewController {
         )
         collectionView.collectionViewLayout = blueprintLayout
         
-        selectedIndex
-            .map { [fetchedMails] index in
-                fetchedMails.value.filter { _ in index == 0 }
+        Observable.merge(
+            selectedIndex.asObservable(),
+            fetchedMails.map { _ in 0 }
+            )
+            .withLatestFrom(fetchedMails) { ($0, $1) }
+            .map { (index, mails) -> [Mail] in
+                if index == 0 {
+                    // unread
+                    return mails.filter { $0.inInbox  }
+                } else {
+                    return mails.filter { !$0.inInbox }
+                }
             }
-            .subscribe(onNext: { [filteredMails] in
-                filteredMails.accept($0)
-                print(self.selectedIndex.value)
-            })
-            .disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] in
+                self?.filteredMails.accept($0)
+                self?.collectionView.reloadData()
+            }).disposed(by: disposeBag)
     }
 
     private func fetch() {
@@ -70,10 +75,13 @@ class MailListViewController: UIViewController {
 
 extension MailListViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let test:UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
+        let test: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
         let imageView = test.contentView.viewWithTag(1) as! UIImageView
-        let cellImage = filteredMails.value[indexPath.row].image
-        imageView.image = cellImage
+        let titleLabel = test.contentView.viewWithTag(2) as! UILabel
+        let mail = filteredMails.value[indexPath.row]
+        imageView.image = mail.image
+        titleLabel.text = mail.name
+
         return test
     }
 
@@ -86,7 +94,7 @@ extension MailListViewController: UICollectionViewDelegate,UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DetailViewController.make(mail: samples[indexPath.item])
+        let vc = DetailViewController.make(mail: filteredMails.value[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }
 }

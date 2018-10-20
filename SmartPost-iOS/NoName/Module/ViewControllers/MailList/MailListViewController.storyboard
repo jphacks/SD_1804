@@ -74,10 +74,10 @@
                                     <segment title="今入っている郵便物"/>
                                     <segment title="過去の郵便物"/>
                                 </segments>
+                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="selectedSwitch:" destination="oMb-ae-z6r" eventType="valueChanged" id="mwG-HF-SkI"/>
                                 </connections>
-                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,6 +94,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="B1n-hg-lch" id="lfs-Qv-kme"/>
+                        <outlet property="segmentedControl" destination="50I-cB-XwJ" id="IyX-Mc-xnz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpm-n0-dht" userLabel="First Responder" sceneMemberID="firstResponder"/>

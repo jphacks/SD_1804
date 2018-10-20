@@ -14,13 +14,14 @@ struct Mail {
         case unknown
     }
 
-    public init(date: String, from: String, name: String, src: String, time: String, type: String) {
+    public init(date: String, from: String, name: String, src: String, time: String, type: String, inInbox: Bool) {
         self.date = date
         self.from = from
         self.name = name
         self.src = src
         self.time = time
         self.type = type
+        self.inInbox = inInbox
     }
 
     let date: String
@@ -29,7 +30,7 @@ struct Mail {
     private let src: String
     let time: String
     let type: String
-    let isInbox: Bool = true
+    let inInbox: Bool
 
     var image: UIImage? {
         guard let data = Data(base64Encoded: src) else { return nil }
