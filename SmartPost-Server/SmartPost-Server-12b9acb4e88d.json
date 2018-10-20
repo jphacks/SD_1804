@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smartpost-server",
+  "private_key_id": "12b9acb4e88df1c128a4d79513fca77a1b4760d2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC6Uo3SLzsPziPu\nrp4zcsV4jz95s/S/skPru6g2Uj407/3eyR4oqriQ9otxm5RZi3z5pu+1nOUqxeoJ\n5rTH8puygo5ROhFo7x2NfeltlYGWIHaePCN8bqyC1Rw0Y6D8IY4yxm5ywGcZcZfa\nx/O9Gdb75tbJ6Loz4WrpkpVSqTt7TUDdTDMmKEFjZKDRrvLLCnysoawb5u2znDSr\n4NrXslXw/kbnCPR/0orjtjeKub8zC3/6wvkmWKWdjNpZ5NE3GWBp7je8SUpGCkLI\nCHSNFFl0X9tswtP5fMwYJjcVfAITmVSEAHrnk98KpKXUjTgFXeH2en7eS9OS0hZx\npxFW0Wt/AgMBAAECggEAVTyA7p92uHNIUt+FNeoSVmXJ1wYxOCT4F3ZgrIERPixw\nCiQdbOM0zfRLtGxFAHXkdV0eGgoteFTUDTWCjFn7Sj2Zl6Ul48hHz7vDNsOHZcNy\nIE9IuJr0xmFxprHRKqa7I5VNX6ePQr+JhaelZGPWyqQ+rF2QGT3NKA9LymXq9SuH\nLOiuUdov9XwiYyd1lRSM1EiE3Y8yInQbxeuQ5aSOj3TbhVrEDV/BJcfawU6hEgN7\nXwTlUbGWSatrzeD7DzRlu/3Cqk9vkDR7biYkYRM9Gzvw/s60L6E/Yay4ktQmiLsi\nuOkJhKdFgoYI238koFtlS1FHGV9eNYEDH0+M9tJFkQKBgQD9hsx5YGdXjNXt8G3L\nmK7ZKgkhf9wzS/wU056O0oPbtNfHbK1dAw3oPrMAdOedL3v4SCQ+DnCwj9mYjjtb\nxZhuoiDJDuT1soU66s+0RXWNx/s9LKcgTOwiFJtEZ9M7f8lCk84GafkU67p3iS13\nvgUmIZ0nBtepNjfg0JX49nOC9wKBgQC8I+h6HJI3d3O+N4XQvMLj00rjjGPOkVf8\nt1SoJJd6BXknNg/+qxepXliOKXTnVrb5y/GUUF1zUn2lkXSHEwTEHKov9avnNxH/\n+j1vMaui5Zopo5QdgBmkezzrOCbHX1yzAz/DZljPLW0NBeCQw86fX9PnfemcY6C8\nfL7qgM2xuQKBgQCvPKRK5TKpFkSsYXpStudsXZzQFeOrZUMJVjiLecEAdOCNDHZM\nCxdqxyPNFgEd6btjouHCLxL/R37c7rritRKmrdPBhVUG6u0iCzmj3jrh1C+5Wgru\nzZyN9fZYcvdTcgE3zpgiYM91AXbyttPBp4tBjwxj9FvOrxYyg5qV6itvgwKBgQCN\nZJshsnk80DwfF5Esx7/cAn6EtoyHwPmURp+L4jwpCxX7Hwk0Rpb4xZvd81AVUDkh\nUGFVKnSg57zgAonFvchWLojElGhF00Bm1UT4XSb1vIJ4iqQU66HZ2Hh2+nNCYOvE\n6UsxaaiSwzvyjpkvksilRBp4HkvEKaeyIDpG+NgdmQKBgFkaGEYPg7u5nxUBK+tr\ng/TD2yqgbz1ErbYEaQuyXoooRrNtXA36s9G4RdZFJf05ShuCCe0yVZzr8TdCm3Nc\nhggoDVCPAqbcJxlleWWsP5q6qB1qVX51+QrGQzwBXGfclvLmBs/dxr4j+lgfaiZk\nX+OMgJ8OwoR6Cdax1lEVOvOX\n-----END PRIVATE KEY-----\n",
+  "client_email": "smartpostocr@smartpost-server.iam.gserviceaccount.com",
+  "client_id": "117273453722979479047",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/smartpostocr%40smartpost-server.iam.gserviceaccount.com"
+}
