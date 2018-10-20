@@ -64,6 +64,7 @@ exports.addImages = functions.https.onRequest((req, res) => {
     const time = date.getHours() + ":" + date.getMinutes();
     const from = 'amazon';
     const name = 'mac';
+    console.log("id", id)
     const src = req.body.src;
     const inInbox = true;
     const type = req.body.type;
@@ -81,7 +82,10 @@ exports.addImages = functions.https.onRequest((req, res) => {
         // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
         // return res.redirect(303, snapshot.ref.toString());
         return res.status(200).send('SUCCESS！');
-    });
+    })
+    .catch(error => {
+        res.status(404).send({ id, error, message: 'Not Found' })
+    })
 });
 
 exports.takeOutPost = functions.https.onRequest((req, res) => {
