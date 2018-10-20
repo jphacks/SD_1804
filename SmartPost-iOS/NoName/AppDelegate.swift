@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let vc1 = UIViewController.instantiate(with: .MailListViewController)
         vc1.title = "一覧"
+        vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
         let vc2 = UIViewController.instantiate(with: .SearchViewController)
         vc2.title = "検索"
+        vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
         tabBarController.viewControllers = [vc1, vc2]
 
         window?.rootViewController = UINavigationController(
