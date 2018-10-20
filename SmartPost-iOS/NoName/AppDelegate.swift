@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
@@ -19,12 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         let tabBarController = UITabBarController()
-        let vc1 = UIViewController.instantiate(with: .MailListViewController)
-        vc1.title = "一覧"
-        vc1.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-        let vc2 = UIViewController.instantiate(with: .SearchViewController)
-        vc2.title = "検索"
-        vc2.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
+        let vc1: MailListViewController = {
+            let vc = ViewController.instantiate(MailListViewController.self)
+            vc.title = "一覧"
+            vc.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
+            return vc
+        }()
+        let vc2: SearchViewController = {
+            let vc = ViewController.instantiate(SearchViewController.self)
+            vc.title = "検索"
+            vc.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
+            return vc
+        }()
         tabBarController.viewControllers = [vc1, vc2]
 
         window?.rootViewController = UINavigationController(

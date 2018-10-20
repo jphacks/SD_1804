@@ -13,7 +13,11 @@ struct Mail: Codable {
         case unknown
     }
 
-    let date: Date
-    let imageUrl: String
+    let date: String
+    let from: String
+    let name: String
+    let src: String
+    let time: String
     let type: String
+    let isInbox: Bool
 }
