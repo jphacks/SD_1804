@@ -17,10 +17,10 @@ exports.addMemo = functions.https.onRequest((req, res) => {
         return;
     }
     // JsonParse
-    const obj = JSON.parse(req.body);
-    const src = obj.src;
+    // const obj = JSON.parse(req.body);
+    const src = req.body.src;
 
-    res.status(200).send(obj);
+    res.status(200).send(src);
 });
 
 exports.addMessage = functions.https.onRequest((req, res) => {
@@ -58,24 +58,27 @@ exports.getImages = functions.https.onRequest((req, res) => {
 });
 
 exports.addImages = functions.https.onRequest((req, res) => {
-    // JsonParse
-    obj = JSON.parse(req.body);
-    src = obj.src;
+    const date = new Date();
+    const id = req.query.id;
+    const today = date.getFullYear() + "/" + date.getMonth() + 1 + "/" + date.getDate();
+    const time = date.getHours() + ":" + date.getMinutes();
+    const from = 'amazon';
+    const name = 'mac';
+    const src = req.body.src;
+    const inInbox = "True";
+    const type = 'jpg';
+
     // Push the new message into the Realtime Database using the Firebase Admin SDK.
-    return admin.database().ref(`/users/${id}/images`).push(req).then((snapshot) => {
+    return admin.database().ref(`/users/${id}/images`).push({
+        date : today,
+        from,
+        name,
+        src,
+        inInbox,
+        time,
+        type
+    }).then((snapshot) => {
         // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
         return res.redirect(303, snapshot.ref.toString());
     });
 });
-
-exports.makeUppercase = functions.database.ref('/messages/{pushId}/original')
-    .onCreate((snapshot, context) => {
-        // Grab the current value of what was written to the Realtime Database.
-        const original = snapshot.val();
-        console.log('Uppercasing', context.params.pushId, original);
-        const uppercase = original.toUpperCase();
-        // You must return a Promise when performing asynchronous tasks inside a Functions such as
-        // writing to the Firebase Realtime Database.
-        // Setting an "uppercase" sibling in the Realtime Database returns a Promise.
-        return snapshot.ref.parent.child('uppercase').set(uppercase);
-    });
