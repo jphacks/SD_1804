@@ -22,11 +22,11 @@
 		6E107D76217ADDDE0012E68D /* MailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D75217ADDDE0012E68D /* MailRepository.swift */; };
 		6E107D78217ADE450012E68D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D77217ADE450012E68D /* AppError.swift */; };
 		6E107D7B217AED4F0012E68D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D7A217AED4F0012E68D /* R.generated.swift */; };
+		6E6E4D15217B0D5400E11503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9827040A217A3EB500BA3C21 /* Assets.xcassets */; };
 		8FE70C9D167F160AA2D6AB7F /* Pods_NoName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B403CE112DC6B59BC4390F /* Pods_NoName.framework */; };
 		98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270400217A3EB400BA3C21 /* AppDelegate.swift */; };
 		98270406217A3EB400BA3C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98270404217A3EB400BA3C21 /* Main.storyboard */; };
 		98270409217A3EB400BA3C21 /* NoName.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98270407217A3EB400BA3C21 /* NoName.xcdatamodeld */; };
-		9827040B217A3EB500BA3C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9827040A217A3EB500BA3C21 /* Assets.xcassets */; };
 		9827040E217A3EB500BA3C21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9827040C217A3EB500BA3C21 /* LaunchScreen.storyboard */; };
 		98270419217A3EB500BA3C21 /* NoNameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270418217A3EB500BA3C21 /* NoNameTests.swift */; };
 		98270424217A3EB500BA3C21 /* NoNameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270423217A3EB500BA3C21 /* NoNameUITests.swift */; };
@@ -471,7 +471,6 @@
 				98F66DAF217AE4AA0039BE53 /* test7.png in Resources */,
 				6E107D64217AC8720012E68D /* MailListViewController.storyboard in Resources */,
 				9827040E217A3EB500BA3C21 /* LaunchScreen.storyboard in Resources */,
-				9827040B217A3EB500BA3C21 /* Assets.xcassets in Resources */,
 				6E107D62217AC8290012E68D /* SearchViewController.storyboard in Resources */,
 				98F66DBA217AE4AA0039BE53 /* test12.png in Resources */,
 				98F66DB5217AE4AA0039BE53 /* test4.png in Resources */,
@@ -480,6 +479,7 @@
 				98F66DB2217AE4AA0039BE53 /* test3.png in Resources */,
 				98F66DB6217AE4AA0039BE53 /* test8.png in Resources */,
 				98F66DB8217AE4AA0039BE53 /* test10.png in Resources */,
+				6E6E4D15217B0D5400E11503 /* Assets.xcassets in Resources */,
 				98F66DB3217AE4AA0039BE53 /* test6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
