@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E107D57217AC4AF0012E68D /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D56217AC4AF0012E68D /* Mail.swift */; };
+		6E107D5C217AC6AE0012E68D /* MailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D5B217AC6AE0012E68D /* MailListViewController.swift */; };
+		6E107D60217AC6E20012E68D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D5F217AC6E20012E68D /* DetailViewController.swift */; };
+		6E107D62217AC8290012E68D /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E107D61217AC8290012E68D /* SearchViewController.storyboard */; };
+		6E107D64217AC8720012E68D /* MailListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E107D63217AC8720012E68D /* MailListViewController.storyboard */; };
+		6E107D66217AC8990012E68D /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E107D65217AC8990012E68D /* DetailViewController.storyboard */; };
+		6E107D68217AC9D10012E68D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D67217AC9D10012E68D /* SearchViewController.swift */; };
 		8FE70C9D167F160AA2D6AB7F /* Pods_NoName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B403CE112DC6B59BC4390F /* Pods_NoName.framework */; };
 		98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270400217A3EB400BA3C21 /* AppDelegate.swift */; };
 		98270406217A3EB400BA3C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98270404217A3EB400BA3C21 /* Main.storyboard */; };
@@ -15,9 +22,6 @@
 		9827040E217A3EB500BA3C21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9827040C217A3EB500BA3C21 /* LaunchScreen.storyboard */; };
 		98270419217A3EB500BA3C21 /* NoNameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270418217A3EB500BA3C21 /* NoNameTests.swift */; };
 		98270424217A3EB500BA3C21 /* NoNameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270423217A3EB500BA3C21 /* NoNameUITests.swift */; };
-		98270436217AA4C200BA3C21 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270435217AA4C200BA3C21 /* HomeViewController.swift */; };
-		98270438217AA5E900BA3C21 /* HomeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98270437217AA5E900BA3C21 /* HomeViewController.storyboard */; };
-		9827043C217AACB100BA3C21 /* SideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827043B217AACB100BA3C21 /* SideViewController.swift */; };
 		9827043E217AB6FB00BA3C21 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827043D217AB6FB00BA3C21 /* UIStoryboard.swift */; };
 		98270440217AB70800BA3C21 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827043F217AB70800BA3C21 /* UIView.swift */; };
 		98270443217ABC5200BA3C21 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270442217ABC5200BA3C21 /* Storyboard.swift */; };
@@ -47,6 +51,13 @@
 		37CBAE916D49C530BC158EFF /* Pods-NoName.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoName.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoName/Pods-NoName.debug.xcconfig"; sourceTree = "<group>"; };
 		59B403CE112DC6B59BC4390F /* Pods_NoName.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoName.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D673BDCBAECD7DA847C5AA1 /* Pods-NoNameTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoNameTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoNameTests/Pods-NoNameTests.release.xcconfig"; sourceTree = "<group>"; };
+		6E107D56217AC4AF0012E68D /* Mail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
+		6E107D5B217AC6AE0012E68D /* MailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailListViewController.swift; sourceTree = "<group>"; };
+		6E107D5F217AC6E20012E68D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6E107D61217AC8290012E68D /* SearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
+		6E107D63217AC8720012E68D /* MailListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MailListViewController.storyboard; sourceTree = "<group>"; };
+		6E107D65217AC8990012E68D /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
+		6E107D67217AC9D10012E68D /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		81725C99A4813ED87D7C7823 /* Pods_NoNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		982703FD217A3EB400BA3C21 /* NoName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98270400217A3EB400BA3C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,9 +72,6 @@
 		9827041F217A3EB500BA3C21 /* NoNameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoNameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98270423217A3EB500BA3C21 /* NoNameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNameUITests.swift; sourceTree = "<group>"; };
 		98270425217A3EB500BA3C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98270435217AA4C200BA3C21 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		98270437217AA5E900BA3C21 /* HomeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeViewController.storyboard; sourceTree = "<group>"; };
-		9827043B217AACB100BA3C21 /* SideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideViewController.swift; sourceTree = "<group>"; };
 		9827043D217AB6FB00BA3C21 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
 		9827043F217AB70800BA3C21 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		98270442217ABC5200BA3C21 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
@@ -114,6 +122,41 @@
 				E5348930923144FF9E02BCAC /* Pods-NoNameUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6E107D55217AC4870012E68D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6E107D56217AC4AF0012E68D /* Mail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6E107D58217AC65B0012E68D /* MailList */ = {
+			isa = PBXGroup;
+			children = (
+				6E107D5B217AC6AE0012E68D /* MailListViewController.swift */,
+				6E107D63217AC8720012E68D /* MailListViewController.storyboard */,
+			);
+			path = MailList;
+			sourceTree = "<group>";
+		};
+		6E107D59217AC65E0012E68D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6E107D67217AC9D10012E68D /* SearchViewController.swift */,
+				6E107D61217AC8290012E68D /* SearchViewController.storyboard */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		6E107D5A217AC6640012E68D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6E107D5F217AC6E20012E68D /* DetailViewController.swift */,
+				6E107D65217AC8990012E68D /* DetailViewController.storyboard */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		96AC29DB109E60E31EF124F1 /* Frameworks */ = {
@@ -184,8 +227,9 @@
 		98270431217A444600BA3C21 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9827043A217AAADC00BA3C21 /* SideView */,
-				98270439217AAAD000BA3C21 /* Home */,
+				6E107D5A217AC6640012E68D /* Detail */,
+				6E107D59217AC65E0012E68D /* Search */,
+				6E107D58217AC65B0012E68D /* MailList */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,26 +259,10 @@
 			path = Protcols;
 			sourceTree = "<group>";
 		};
-		98270439217AAAD000BA3C21 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				98270437217AA5E900BA3C21 /* HomeViewController.storyboard */,
-				98270435217AA4C200BA3C21 /* HomeViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		9827043A217AAADC00BA3C21 /* SideView */ = {
-			isa = PBXGroup;
-			children = (
-				9827043B217AACB100BA3C21 /* SideViewController.swift */,
-			);
-			path = SideView;
-			sourceTree = "<group>";
-		};
 		98270441217AB83400BA3C21 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				6E107D55217AC4870012E68D /* Models */,
 				98270431217A444600BA3C21 /* ViewControllers */,
 				98270433217A447F00BA3C21 /* Extentiones */,
 				98270434217A448D00BA3C21 /* Protcols */,
@@ -350,9 +378,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E107D66217AC8990012E68D /* DetailViewController.storyboard in Resources */,
+				6E107D64217AC8720012E68D /* MailListViewController.storyboard in Resources */,
 				9827040E217A3EB500BA3C21 /* LaunchScreen.storyboard in Resources */,
-				98270438217AA5E900BA3C21 /* HomeViewController.storyboard in Resources */,
 				9827040B217A3EB500BA3C21 /* Assets.xcassets in Resources */,
+				6E107D62217AC8290012E68D /* SearchViewController.storyboard in Resources */,
 				98270406217A3EB400BA3C21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,11 +493,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98270436217AA4C200BA3C21 /* HomeViewController.swift in Sources */,
+				6E107D68217AC9D10012E68D /* SearchViewController.swift in Sources */,
+				6E107D57217AC4AF0012E68D /* Mail.swift in Sources */,
+				6E107D60217AC6E20012E68D /* DetailViewController.swift in Sources */,
 				98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */,
+				6E107D5C217AC6AE0012E68D /* MailListViewController.swift in Sources */,
 				98270409217A3EB400BA3C21 /* NoName.xcdatamodeld in Sources */,
 				98270443217ABC5200BA3C21 /* Storyboard.swift in Sources */,
-				9827043C217AACB100BA3C21 /* SideViewController.swift in Sources */,
 				98270440217AB70800BA3C21 /* UIView.swift in Sources */,
 				98270445217ABD7700BA3C21 /* UIViewController.swift in Sources */,
 				9827043E217AB6FB00BA3C21 /* UIStoryboard.swift in Sources */,

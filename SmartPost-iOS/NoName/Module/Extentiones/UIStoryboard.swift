@@ -7,23 +7,17 @@
 //
 
 import UIKit
-extension UIStoryboard{
-    enum Storyboard: String{
-        case HomeViewController
-        case SearchViewController
-        case NotificationViewController
-        case MessageViewController
-        case Talking
-        case Setting
-    }
-    convenience init(storyboard:Storyboard,bundle:Bundle? = nil) {
-        self.init(name:storyboard.rawValue,bundle:bundle)
-    }
-    func instantiateViewController<T:UIViewController>() -> T where T:StoryboardIdentifiable{
-        let optionalViewController = self.instantiateViewController(withIdentifier: T.storyboardIdentifier)
-        guard let viewController = optionalViewController as? T else {
-            fatalError("something error")
-        }
-        return viewController
+
+enum ViewController: String{
+    case HomeViewController
+    case MailListViewController
+    case SearchViewController
+    case DetailViewController
+}
+
+extension UIViewController {
+    static func instantiate(with storyboard: ViewController) -> UIViewController {
+        let storyboard = UIStoryboard(name: storyboard.rawValue, bundle: nil)
+        return storyboard.instantiateInitialViewController()!
     }
 }
