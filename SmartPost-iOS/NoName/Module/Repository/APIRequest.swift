@@ -21,6 +21,7 @@ protocol APIRequest {
 extension APIRequest {
     var encoding: ParameterEncoding { return URLEncoding.default }
     var headers: HTTPHeaders? { return nil }
+    var cacheKey: String { return "\(method.rawValue).\(path)"}
 }
 
 // extensionでリクエストを追加していく

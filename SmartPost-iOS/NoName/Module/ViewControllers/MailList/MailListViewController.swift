@@ -39,10 +39,10 @@ class MailListViewController: UIViewController {
 
     private func setupUI() {
         title = "マイポスト"
-        let size = view.frame.width/3.0
+        let width = view.frame.width
         let blueprintLayout = VerticalBlueprintLayout(
-            itemsPerRow: 3.0,
-            itemSize: CGSize(width: size, height: size),
+            itemsPerRow: 1,
+            itemSize: CGSize(width: width, height: width/2),
             minimumInteritemSpacing: 5.0,
             minimumLineSpacing: 5.0
         )
@@ -89,10 +89,12 @@ class MailListViewController: UIViewController {
 extension MailListViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let test: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath)
-        let imageView = test.contentView.viewWithTag(1) as! UIImageView
-        let titleLabel = test.contentView.viewWithTag(2) as! UILabel
+        let imageView1 = test.contentView.viewWithTag(1) as! UIImageView
+        let imageView2 = test.contentView.viewWithTag(2) as! UIImageView
+        let titleLabel = test.contentView.viewWithTag(3) as! UILabel
         let mail = filteredMails.value[indexPath.row]
-        imageView.image = mail.image
+        imageView1.image = mail.image1
+        imageView2.image = mail.image2
         titleLabel.text = mail.name
 
         return test

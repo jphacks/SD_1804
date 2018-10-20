@@ -13,7 +13,7 @@ struct APIConfiguration {
     let pathExtension: String
 
     static let `default`: APIConfiguration = APIConfiguration(
-        baseURL: URL(string: "https://us-central1-smart-post-tol.cloudfunctions.net")!,
+        baseURL: URL(string: "https://us-central1-smart-post-tol-2.cloudfunctions.net")!,
         pathExtension: ""
     )
 }
