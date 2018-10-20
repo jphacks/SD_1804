@@ -1,0 +1,10 @@
+{
+    "title": "test title",
+    "description": "test description",
+    "platforms": [
+        "A",
+        "B"
+    ],
+    "million": false,
+    "releasedAt": "2018-05-01"
+}
