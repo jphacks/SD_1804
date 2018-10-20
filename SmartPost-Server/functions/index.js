@@ -1,5 +1,10 @@
 const functions = require('firebase-functions');
 
+const vision = require('@google-cloud/vision');
+
+// Creates a client
+const client = new vision.ImageAnnotatorClient();
+
 // The Firebase Admin SDK to access the Firebase Realtime Database.
 const admin = require('firebase-admin');
 admin.initializeApp();
@@ -128,4 +133,15 @@ exports.randomTakeInPost = functions.https.onRequest((req, res) => {
         .catch(error => {
             res.status(404).send({ message: 'Not Found' })
         })
+});
+
+exports.ocr = functions.https.onRequest((req, res) => {
+    const vision = cloudVision({
+        projectId: 'smartpost-server',
+        keyFilename: '../SmartPost-Server-12b9acb4e88d.json'
+    })
+    const fileName = '';
+    vision.detectText('/path/to/image.jpg', (err, text, apiResponse) => {
+        console.log(text)
+    })
 });

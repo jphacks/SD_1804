@@ -32,11 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc.title = "検索"
             return vc
         }()
-        tabBarController.viewControllers = [vc1, vc2]
+        tabBarController.viewControllers = [
+            UINavigationController(rootViewController: vc1),
+            UINavigationController(rootViewController: vc2)
+        ]
 
-        window?.rootViewController = UINavigationController(
-            rootViewController: tabBarController
-        )
+        window?.rootViewController = tabBarController
 
         return true
     }}
