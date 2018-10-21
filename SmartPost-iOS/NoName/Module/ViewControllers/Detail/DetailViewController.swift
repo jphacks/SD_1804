@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Rswift
 import FlexiblePageControl
+import RxSwift
 
 class DetailViewController: UIViewController,UIScrollViewDelegate {
     static func make(mail: Mail) -> DetailViewController {
@@ -33,9 +34,13 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
     let pageControl = FlexiblePageControl()
     let scrollView = UIScrollView()
     let numberOfPage = 2
+
+    private let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI(mail: mail)
+        bindUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +52,6 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.frame = mailImageView.bounds
         scrollView.center = CGPoint(x: view.frame.width/2, y: mailImageView.center.y)
-        scrollView.frame = mailImageView.frame
         scrollView.contentSize = CGSize(width: mailImageView.frame.width * CGFloat(numberOfPage), height: mailImageView.frame.height)
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numberOfPage
@@ -58,13 +62,32 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         }
         mailImageView.addSubview(scrollView)
         flagLabel.backgroundColor = mail.inInbox ? .red : .gray
-        flagLabel.text = mail.inInbox ? "未読" : "既読"
-        dateLabel.text = "\(mail.date) \(mail.time)"
+        flagLabel.text = mail.inInbox ? "#未読" : "#既読"
+        dateLabel.attributedText = NSAttributedString(
+            string: "\(mail.date) \(mail.time)",
+            attributes: [NSAttributedString.Key.underlineColor: UIColor.black,
+                         NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                         NSAttributedString.Key.kern: 1.5]
+        )
+        dateLabel.isUserInteractionEnabled = true
         nameLabel.text = mail.name
         fromLabel.text = mail.from
     }
+
+    private func bindUI() {
+        let ad = UIApplication.shared.delegate as! AppDelegate
+
+        let dateLabelTap = UITapGestureRecognizer(target: nil, action: nil)
+        dateLabelTap.rx.event.subscribe(onNext: { [unowned self] _ in
+            ad.tab.selectedIndex = 1
+            let date = self.dateLabel.text!.split(separator: " ")[0]
+            debugLog(date)
+            ad.searchViewController.searchSubject.onNext(String(date))
+        }).disposed(by: disposeBag)
+        dateLabel.addGestureRecognizer(dateLabelTap)
+
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
     }
 }

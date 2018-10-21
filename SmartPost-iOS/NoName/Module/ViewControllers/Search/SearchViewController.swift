@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class SearchViewController: UIViewController{
+class SearchViewController: UIViewController,UISearchBarDelegate{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar:UISearchBar!
     private let searchFromDateButtonItem = UIBarButtonItem(title: "受取日時で絞り込み", style: .plain, target: nil, action: nil)
@@ -21,6 +21,7 @@ class SearchViewController: UIViewController{
     private let selectedIndex = BehaviorRelay<Int>(value: 0)
     private let fetchedMails = BehaviorRelay<[Mail]>(value: [])
     private var filteredMails = BehaviorRelay<[Mail]>(value: [])
+    public let searchSubject = PublishSubject<String>()
     
     private let repository = MailRepository()
     private let disposeBag = DisposeBag()
@@ -52,6 +53,7 @@ class SearchViewController: UIViewController{
         setupDatePicker()
 
         fetchedMails
+            .catchError { _ in .empty() }
             .subscribe(
                 onNext: { [weak self] in
                     self?.filteredMails.accept($0)
@@ -69,13 +71,15 @@ class SearchViewController: UIViewController{
     }
     private func setupSearch(){
         let confirmTextTime = 1.0
+        searchBar.delegate = self
         self.searchBar.rx
             .text
             .orEmpty
+            .filter{$0.count > 0}
             .debounce(confirmTextTime,scheduler: MainScheduler.instance)
             .withLatestFrom(fetchedMails){($0,$1)}
             .map{ (str,mails) -> [Mail] in
-                return mails.filter{$0.name.contains(str) || $0.date == str}
+                return mails.filter{$0.name.contains(str) || $0.date.contains(str)}
             }
             .subscribe(onNext:{ [weak self] in
                 self?.filteredMails.accept($0)
@@ -98,21 +102,31 @@ class SearchViewController: UIViewController{
     }
 
     private func setupDatePicker() {
+        let mailsByDate = searchSubject
+            .withLatestFrom(fetchedMails) { ($0, $1) }
+            .map { (query, mails) in
+                mails.filter { $0.date == query }
+        }
+        searchSubject
+            .bind(to: searchBar.rx.text)
+            .disposed(by: disposeBag)
+        
+        mailsByDate
+            .bind(to: filteredMails)
+            .disposed(by: disposeBag)
+
         let datePickerContainerView = UIView(frame: .zero)
         datePickerContainerView.backgroundColor = .white
         let datePicker = UIDatePicker(frame: .zero)
         datePicker.datePickerMode = .date
         let searchButton = UIButton(frame: .zero)
         searchButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [searchSubject] in
                 datePickerContainerView.removeFromSuperview()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy/MM/dd"
                 let date = dateFormatter.string(from: datePicker.date)
-
-                let mailsByDate = self.fetchedMails.value
-                    .filter { $0.date == date }
-                self.filteredMails.accept(mailsByDate)
+                searchSubject.onNext(date)
             }).disposed(by: disposeBag)
         searchButton.setTitle("検索", for: .normal)
         searchButton.setTitleColor(.black, for: .normal)
@@ -136,7 +150,9 @@ class SearchViewController: UIViewController{
                 }
             }).disposed(by: disposeBag)
     }
-
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
 }
 extension SearchViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

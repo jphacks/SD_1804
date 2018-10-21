@@ -14,6 +14,9 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
+    var searchViewController: SearchViewController!
+    var tab: UITabBarController!
+
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -31,11 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc.title = "検索"
             return vc
         }()
+        searchViewController = vc2
         tabBarController.viewControllers = [
             UINavigationController(rootViewController: vc1),
             UINavigationController(rootViewController: vc2)
         ]
 
+        self.tab = tabBarController
+        tabBarController.tabBar.tintColor = .red
         window?.rootViewController = tabBarController
 
         return true
