@@ -45,7 +45,7 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
     private func setupUI(mail: Mail) {
         let images = [mail.image1,mail.image2]
         scrollView.delegate = self
-        scrollView.frame = CGRect(x: 0, y: 0, width: mailImageView.frame.width, height: mailImageView.frame.height)
+        scrollView.frame = mailImageView.frame
         scrollView.center = mailImageView.center
         scrollView.contentSize = CGSize(width: mailImageView.frame.width * CGFloat(numberOfPage), height: mailImageView.frame.height)
         scrollView.isPagingEnabled = true
