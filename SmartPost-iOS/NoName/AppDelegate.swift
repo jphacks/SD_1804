@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationController(rootViewController: vc1),
             UINavigationController(rootViewController: vc2)
         ]
-
+        tabBarController.tabBar.tintColor = .red
         window?.rootViewController = tabBarController
 
         return true

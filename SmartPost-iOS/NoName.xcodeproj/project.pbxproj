@@ -806,7 +806,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TKM4VSA3YF;
+				DEVELOPMENT_TEAM = HB42PPZ47Z;
 				INFOPLIST_FILE = NoName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -825,7 +825,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TKM4VSA3YF;
+				DEVELOPMENT_TEAM = HB42PPZ47Z;
 				INFOPLIST_FILE = NoName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

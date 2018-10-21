@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-class SearchViewController: UIViewController{
+class SearchViewController: UIViewController,UISearchBarDelegate{
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar:UISearchBar!
     private let searchFromDateButtonItem = UIBarButtonItem(title: "受取日時で絞り込み", style: .plain, target: nil, action: nil)
@@ -69,9 +69,11 @@ class SearchViewController: UIViewController{
     }
     private func setupSearch(){
         let confirmTextTime = 1.0
+        searchBar.delegate = self
         self.searchBar.rx
             .text
             .orEmpty
+            .filter{$0.count > 0}
             .debounce(confirmTextTime,scheduler: MainScheduler.instance)
             .withLatestFrom(fetchedMails){($0,$1)}
             .map{ (str,mails) -> [Mail] in
@@ -136,7 +138,9 @@ class SearchViewController: UIViewController{
                 }
             }).disposed(by: disposeBag)
     }
-
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
 }
 extension SearchViewController: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
