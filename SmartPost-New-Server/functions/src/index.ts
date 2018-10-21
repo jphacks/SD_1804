@@ -133,6 +133,20 @@ export const randomTakeInPost = functions.https.onRequest((req, res) => {
     })
 });
 
+export const registerAddress = functions.https.onRequest((req, res) => {
+    const id = req.query.id;
+    const address = req.body.address;
+    console.log(address)
+    return admin.database().ref(`/users/${id}`)
+        .update({
+            address: address
+        }).then((snapshot) => {
+            return res.status(200).send('SUCCESS！');
+        }).catch((error) => {
+            return res.status(404).send({ message: 'Not Found' })
+        })
+});
+
 export const ocrParse = functions.https.onRequest(async (req, res) => {
     // const id = req.query.id;
     const src1 = req.body.src1;
