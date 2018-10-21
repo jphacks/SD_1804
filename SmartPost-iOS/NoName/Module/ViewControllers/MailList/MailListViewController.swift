@@ -52,7 +52,7 @@ class MailListViewController: UIViewController {
         
         Observable.merge(
             selectedIndex.asObservable(),
-            fetchedMails.catchError { _ in .empty() }.map { _ in 0 }
+            fetchedMails.map { _ in 0 }
             )
             .withLatestFrom(fetchedMails) { ($0, $1) }
             .map { (index, mails) -> [Mail] in
@@ -81,6 +81,7 @@ class MailListViewController: UIViewController {
             }, onSubscribed: { [weak self] in
                 self?.startLoading()
             })
+            .catchError { _ in .empty() }
             .bind(to: fetchedMails)
             .disposed(by: disposeBag)
     }

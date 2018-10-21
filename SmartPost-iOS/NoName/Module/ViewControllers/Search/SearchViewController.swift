@@ -97,6 +97,7 @@ class SearchViewController: UIViewController,UISearchBarDelegate{
                 onSubscribed: { [weak self] in
                     self?.startLoading()
             })
+            .catchError { _ in .empty() }
             .bind(to: fetchedMails)
             .disposed(by: disposeBag)
     }

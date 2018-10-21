@@ -16,6 +16,7 @@ target 'NoName' do
  	pod 'NVActivityIndicatorView'
   	pod 'PINCache'
   	pod 'Cache'
+  pod 'Firebase/Messaging'
   target 'NoNameTests' do
     inherit! :search_paths
     # Pods for testing
