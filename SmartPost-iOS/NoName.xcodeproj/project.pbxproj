@@ -22,7 +22,7 @@
 		6E107D76217ADDDE0012E68D /* MailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D75217ADDDE0012E68D /* MailRepository.swift */; };
 		6E107D78217ADE450012E68D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D77217ADE450012E68D /* AppError.swift */; };
 		6E107D7B217AED4F0012E68D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D7A217AED4F0012E68D /* R.generated.swift */; };
-		6E3B4560217C2D1D002CF65E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E3B455F217C2D1D002CF65E /* GoogleService-Info.plist */; };
+		6E3B4563217C366E002CF65E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E3B4562217C366E002CF65E /* GoogleService-Info.plist */; };
 		6E6E4D15217B0D5400E11503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9827040A217A3EB500BA3C21 /* Assets.xcassets */; };
 		8FE70C9D167F160AA2D6AB7F /* Pods_NoName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B403CE112DC6B59BC4390F /* Pods_NoName.framework */; };
 		98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270400217A3EB400BA3C21 /* AppDelegate.swift */; };
@@ -87,8 +87,8 @@
 		6E107D75217ADDDE0012E68D /* MailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailRepository.swift; sourceTree = "<group>"; };
 		6E107D77217ADE450012E68D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		6E107D7A217AED4F0012E68D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
-		6E3B455F217C2D1D002CF65E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6E3B4561217C2F89002CF65E /* NoName.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoName.entitlements; sourceTree = "<group>"; };
+		6E3B4562217C366E002CF65E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81725C99A4813ED87D7C7823 /* Pods_NoNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		982703FD217A3EB400BA3C21 /* NoName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98270400217A3EB400BA3C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 				9827040C217A3EB500BA3C21 /* LaunchScreen.storyboard */,
 				9827040F217A3EB500BA3C21 /* Info.plist */,
 				98270407217A3EB400BA3C21 /* NoName.xcdatamodeld */,
-				6E3B455F217C2D1D002CF65E /* GoogleService-Info.plist */,
+				6E3B4562217C366E002CF65E /* GoogleService-Info.plist */,
 			);
 			path = NoName;
 			sourceTree = "<group>";
@@ -476,6 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E3B4563217C366E002CF65E /* GoogleService-Info.plist in Resources */,
 				6E107D66217AC8990012E68D /* DetailViewController.storyboard in Resources */,
 				98F66DB9217AE4AA0039BE53 /* test11.png in Resources */,
 				98F66DB0217AE4AA0039BE53 /* test5.png in Resources */,
@@ -492,7 +493,6 @@
 				98F66DB2217AE4AA0039BE53 /* test3.png in Resources */,
 				98F66DB6217AE4AA0039BE53 /* test8.png in Resources */,
 				98F66DB8217AE4AA0039BE53 /* test10.png in Resources */,
-				6E3B4560217C2D1D002CF65E /* GoogleService-Info.plist in Resources */,
 				6E6E4D15217B0D5400E11503 /* Assets.xcassets in Resources */,
 				98F66DB3217AE4AA0039BE53 /* test6.png in Resources */,
 			);
