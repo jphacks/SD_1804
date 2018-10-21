@@ -22,8 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = UITabBarController()
         let vc1: MailListViewController = {
             let vc = ViewController.instantiate(MailListViewController.self)
-            vc.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-            vc.title = "マイポスト"
+            vc.tabBarItem = UITabBarItem(title: "マイポスト", image: R.image.postIt()!, selectedImage: nil)
             return vc
         }()
         let vc2: SearchViewController = {
