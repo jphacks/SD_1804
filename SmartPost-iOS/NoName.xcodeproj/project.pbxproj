@@ -22,6 +22,7 @@
 		6E107D76217ADDDE0012E68D /* MailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D75217ADDDE0012E68D /* MailRepository.swift */; };
 		6E107D78217ADE450012E68D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D77217ADE450012E68D /* AppError.swift */; };
 		6E107D7B217AED4F0012E68D /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E107D7A217AED4F0012E68D /* R.generated.swift */; };
+		6E3B4560217C2D1D002CF65E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E3B455F217C2D1D002CF65E /* GoogleService-Info.plist */; };
 		6E6E4D15217B0D5400E11503 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9827040A217A3EB500BA3C21 /* Assets.xcassets */; };
 		8FE70C9D167F160AA2D6AB7F /* Pods_NoName.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B403CE112DC6B59BC4390F /* Pods_NoName.framework */; };
 		98270401217A3EB400BA3C21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98270400217A3EB400BA3C21 /* AppDelegate.swift */; };
@@ -86,6 +87,8 @@
 		6E107D75217ADDDE0012E68D /* MailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailRepository.swift; sourceTree = "<group>"; };
 		6E107D77217ADE450012E68D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		6E107D7A217AED4F0012E68D /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		6E3B455F217C2D1D002CF65E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6E3B4561217C2F89002CF65E /* NoName.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoName.entitlements; sourceTree = "<group>"; };
 		81725C99A4813ED87D7C7823 /* Pods_NoNameTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoNameTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		982703FD217A3EB400BA3C21 /* NoName.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoName.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98270400217A3EB400BA3C21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -255,6 +258,7 @@
 		982703FF217A3EB400BA3C21 /* NoName */ = {
 			isa = PBXGroup;
 			children = (
+				6E3B4561217C2F89002CF65E /* NoName.entitlements */,
 				6E107D7A217AED4F0012E68D /* R.generated.swift */,
 				98270441217AB83400BA3C21 /* Module */,
 				98270432217A445100BA3C21 /* Resources */,
@@ -264,6 +268,7 @@
 				9827040C217A3EB500BA3C21 /* LaunchScreen.storyboard */,
 				9827040F217A3EB500BA3C21 /* Info.plist */,
 				98270407217A3EB400BA3C21 /* NoName.xcdatamodeld */,
+				6E3B455F217C2D1D002CF65E /* GoogleService-Info.plist */,
 			);
 			path = NoName;
 			sourceTree = "<group>";
@@ -427,6 +432,14 @@
 				TargetAttributes = {
 					982703FC217A3EB400BA3C21 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					98270413217A3EB500BA3C21 = {
 						CreatedOnToolsVersion = 10.0;
@@ -479,6 +492,7 @@
 				98F66DB2217AE4AA0039BE53 /* test3.png in Resources */,
 				98F66DB6217AE4AA0039BE53 /* test8.png in Resources */,
 				98F66DB8217AE4AA0039BE53 /* test10.png in Resources */,
+				6E3B4560217C2D1D002CF65E /* GoogleService-Info.plist in Resources */,
 				6E6E4D15217B0D5400E11503 /* Assets.xcassets in Resources */,
 				98F66DB3217AE4AA0039BE53 /* test6.png in Resources */,
 			);
@@ -512,8 +526,10 @@
 				"${BUILT_PRODUCTS_DIR}/Blueprints/Blueprints.framework",
 				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/FlexiblePageControl/FlexiblePageControl.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -525,8 +541,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Blueprints.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexiblePageControl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -805,14 +823,15 @@
 			baseConfigurationReference = 37CBAE916D49C530BC158EFF /* Pods-NoName.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoName/NoName.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HB42PPZ47Z;
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = NoName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ToI.NoName;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToI.NoName;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -824,14 +843,15 @@
 			baseConfigurationReference = C2262C0BBD19E36CE7A71C72 /* Pods-NoName.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NoName/NoName.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HB42PPZ47Z;
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = NoName/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ToI.NoName;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToI.NoName;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
