@@ -77,7 +77,7 @@ class SearchViewController: UIViewController,UISearchBarDelegate{
             .debounce(confirmTextTime,scheduler: MainScheduler.instance)
             .withLatestFrom(fetchedMails){($0,$1)}
             .map{ (str,mails) -> [Mail] in
-                return mails.filter{$0.name.contains(str) || $0.date == str}
+                return mails.filter{$0.name.contains(str) || $0.date.contains(str)}
             }
             .subscribe(onNext:{ [weak self] in
                 self?.filteredMails.accept($0)
