@@ -14,16 +14,16 @@ struct Mail: Codable {
         case unknown
     }
 
-    public init(date: String, from: String, name: String, src1: String, src2: String, time: String, type: String, inInbox: Bool) {
-        self.date = date
-        self.from = from
-        self.name = name
-        self.src1 = src1
-        self.src2 = src2
-        self.time = time
-        self.type = type
-        self.inInbox = inInbox
-    }
+//    public init(date: String, from: String, name: String, src1: String, src2: String, time: String, type: String, inInbox: Bool) {
+//        self.date = date
+//        self.from = from
+//        self.name = name
+//        self.src1 = src1
+//        self.src2 = src2
+//        self.time = time
+//        self.type = type
+//        self.inInbox = inInbox
+//    }
 
     let date: String
     let from: String
@@ -32,6 +32,8 @@ struct Mail: Codable {
     private let src2: String
     let time: String
     let type: String
+    let text1: String
+    let text2: String
     let inInbox: Bool
 
     var image1: UIImage? {

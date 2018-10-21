@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74d-X4-gzs">
-                                <rect key="frame" x="0.0" y="396" width="375" height="126"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74d-X4-gzs">
+                                <rect key="frame" x="0.0" y="396" width="375" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暑中見舞い" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wT6-iA-3NQ">
                                         <rect key="frame" x="20" y="65" width="85" height="17"/>
@@ -50,37 +50,64 @@
                                             <constraint firstAttribute="width" constant="16" id="wGb-wQ-Xbe"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/20 6:48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpO-m5-1BE">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="10/20 6:48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpO-m5-1BE">
                                         <rect key="frame" x="269.5" y="102" width="85.5" height="14"/>
                                         <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:mcK-qr-R4F:image" translatesAutoresizingMaskIntoConstraints="NO" id="mcK-qr-R4F">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="imageView:mcK-qr-R4F:image" translatesAutoresizingMaskIntoConstraints="NO" id="mcK-qr-R4F">
                                         <rect key="frame" x="245.5" y="101" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="16" id="XFG-yu-opz"/>
                                             <constraint firstAttribute="height" constant="16" id="tTc-N1-UO9"/>
                                         </constraints>
                                     </imageView>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvE-y9-XMA">
-                                        <rect key="frame" x="0.0" y="-2" width="375" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </scrollView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="認識テキスト1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDm-Zf-Rgf">
+                                        <rect key="frame" x="20" y="127" width="94" height="14"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="認識テキスト2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lan-H1-7a3">
+                                        <rect key="frame" x="20" y="173" width="94" height="14"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="認識テキスト2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8No-AO-SEl">
+                                        <rect key="frame" x="30" y="149" width="92.5" height="14"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="認識テキスト2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rq5-Oz-STW">
+                                        <rect key="frame" x="30" y="195" width="92.5" height="14"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="rq5-Oz-STW" firstAttribute="top" secondItem="lan-H1-7a3" secondAttribute="bottom" constant="8" id="1Y7-h8-4iH"/>
+                                    <constraint firstItem="lan-H1-7a3" firstAttribute="top" secondItem="8No-AO-SEl" secondAttribute="bottom" constant="10" id="9ux-nB-Ln7"/>
+                                    <constraint firstItem="8No-AO-SEl" firstAttribute="top" secondItem="nDm-Zf-Rgf" secondAttribute="bottom" constant="8" id="Ev7-cm-yLO"/>
+                                    <constraint firstItem="rq5-Oz-STW" firstAttribute="leading" secondItem="74d-X4-gzs" secondAttribute="leading" constant="30" id="Ndz-vM-FNh"/>
                                     <constraint firstItem="mcK-qr-R4F" firstAttribute="centerY" secondItem="tpO-m5-1BE" secondAttribute="centerY" id="R4S-dq-YiP"/>
                                     <constraint firstItem="M2y-fH-HfU" firstAttribute="top" secondItem="wT6-iA-3NQ" secondAttribute="bottom" constant="20" id="UOk-6E-2VC"/>
                                     <constraint firstItem="eec-fX-4Ug" firstAttribute="leading" secondItem="74d-X4-gzs" secondAttribute="leading" constant="20" id="Vsb-xU-Wfa"/>
                                     <constraint firstItem="6Tl-p5-TC9" firstAttribute="centerY" secondItem="M2y-fH-HfU" secondAttribute="centerY" id="WT0-kC-Laf"/>
                                     <constraint firstAttribute="trailing" secondItem="tpO-m5-1BE" secondAttribute="trailing" constant="20" id="XJf-mH-D3O"/>
                                     <constraint firstItem="eec-fX-4Ug" firstAttribute="top" secondItem="74d-X4-gzs" secondAttribute="top" constant="20" id="XbE-q7-7ya"/>
+                                    <constraint firstItem="8No-AO-SEl" firstAttribute="leading" secondItem="74d-X4-gzs" secondAttribute="leading" constant="30" id="aP8-hb-ImL"/>
                                     <constraint firstItem="wT6-iA-3NQ" firstAttribute="leading" secondItem="74d-X4-gzs" secondAttribute="leading" constant="20" id="cDJ-Ua-QHk"/>
+                                    <constraint firstItem="lan-H1-7a3" firstAttribute="leading" secondItem="74d-X4-gzs" secondAttribute="leading" constant="20" id="dVI-9I-mDF"/>
                                     <constraint firstItem="tpO-m5-1BE" firstAttribute="leading" secondItem="mcK-qr-R4F" secondAttribute="trailing" constant="8" id="eI0-DS-Ecv"/>
+                                    <constraint firstItem="nDm-Zf-Rgf" firstAttribute="leading" secondItem="74d-X4-gzs" secondAttribute="leading" constant="20" id="edS-1g-nYB"/>
                                     <constraint firstItem="wT6-iA-3NQ" firstAttribute="top" secondItem="eec-fX-4Ug" secondAttribute="bottom" constant="20" id="flu-ZY-ydA"/>
                                     <constraint firstAttribute="bottom" secondItem="tpO-m5-1BE" secondAttribute="bottom" constant="10" id="guA-oO-G1w"/>
-                                    <constraint firstAttribute="bottom" secondItem="M2y-fH-HfU" secondAttribute="bottom" constant="10" id="iCJ-fL-Tv9"/>
+                                    <constraint firstItem="nDm-Zf-Rgf" firstAttribute="top" secondItem="6Tl-p5-TC9" secondAttribute="bottom" constant="10" id="nhW-x0-dGb"/>
                                     <constraint firstItem="M2y-fH-HfU" firstAttribute="leading" secondItem="6Tl-p5-TC9" secondAttribute="trailing" constant="8" id="qnD-Zs-veJ"/>
                                     <constraint firstItem="6Tl-p5-TC9" firstAttribute="leading" secondItem="74d-X4-gzs" secondAttribute="leading" constant="20" id="zF0-Cx-bdI"/>
                                 </constraints>
@@ -92,6 +119,10 @@
                                     <constraint firstAttribute="width" secondItem="9nj-FI-6Y3" secondAttribute="height" multiplier="1:1" id="xTB-WD-WkZ"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SvE-y9-XMA">
+                                <rect key="frame" x="5" y="631" width="375" height="187"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -111,6 +142,8 @@
                         <outlet property="fromLabel" destination="M2y-fH-HfU" id="Kse-zg-ySy"/>
                         <outlet property="mailImageView" destination="9nj-FI-6Y3" id="kGA-jh-ZlK"/>
                         <outlet property="nameLabel" destination="wT6-iA-3NQ" id="D4L-XE-JNh"/>
+                        <outlet property="textLabel1" destination="8No-AO-SEl" id="tNH-Vh-N5e"/>
+                        <outlet property="textLabel2" destination="rq5-Oz-STW" id="rNh-KI-vy9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSK-rc-cz4" userLabel="First Responder" sceneMemberID="firstResponder"/>

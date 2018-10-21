@@ -30,7 +30,9 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var fromLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    
+    @IBOutlet weak var textLabel1: UILabel!
+    @IBOutlet weak var textLabel2: UILabel!
+
     var mail: Mail!
     let pageControl = FlexiblePageControl()
     let scrollView = UIScrollView()
@@ -73,22 +75,21 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         dateLabel.isUserInteractionEnabled = true
         nameLabel.text = mail.name
         fromLabel.text = mail.from
-        
+
+        textLabel1.text = mail.text1
+        textLabel2.text = mail.text2
+
         //
         descriptionViews.delegate = self
         descriptionViews.frame = view.bounds
         descriptionViews.center = view.center
         descriptionViews.isPagingEnabled = true
         descriptionViews.contentSize = CGSize(width: view.frame.width * CGFloat(2), height: view.frame.height)
-        let v1 = self.view
-        let v2 = self.view
-        descriptionViews.addSubview(v1!)
-        descriptionViews.addSubview(v2!)
+//        let v1 = self.view.copy() as! UIView
+//        let v2 = self.view.copy() as! UIView
+//        descriptionViews.addSubview(v1)
+//        descriptionViews.addSubview(v2)
         //
-        
-        
-        
-        
     }
 
     private func bindUI() {
