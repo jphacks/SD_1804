@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Rswift
 import FlexiblePageControl
+import RxSwift
 
 class DetailViewController: UIViewController,UIScrollViewDelegate {
     static func make(mail: Mail) -> DetailViewController {
@@ -33,9 +34,13 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
     let pageControl = FlexiblePageControl()
     let scrollView = UIScrollView()
     let numberOfPage = 2
+
+    private let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI(mail: mail)
+        bindUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,11 +65,25 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         flagLabel.backgroundColor = mail.inInbox ? .red : .gray
         flagLabel.text = mail.inInbox ? "未読" : "既読"
         dateLabel.text = "\(mail.date) \(mail.time)"
+        dateLabel.isUserInteractionEnabled = true
         nameLabel.text = mail.name
         fromLabel.text = mail.from
     }
+
+    private func bindUI() {
+        let ad = UIApplication.shared.delegate as! AppDelegate
+
+        let dateLabelTap = UITapGestureRecognizer(target: nil, action: nil)
+        dateLabelTap.rx.event.subscribe(onNext: { [unowned self] _ in
+            ad.tab.selectedIndex = 1
+            let date = self.dateLabel.text!.split(separator: " ")[0]
+            debugLog(date)
+            ad.searchViewController.searchSubject.onNext(String(date))
+        }).disposed(by: disposeBag)
+        dateLabel.addGestureRecognizer(dateLabelTap)
+
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
         pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
     }
 }

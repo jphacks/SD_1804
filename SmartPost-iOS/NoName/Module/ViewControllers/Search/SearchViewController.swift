@@ -21,6 +21,7 @@ class SearchViewController: UIViewController{
     private let selectedIndex = BehaviorRelay<Int>(value: 0)
     private let fetchedMails = BehaviorRelay<[Mail]>(value: [])
     private var filteredMails = BehaviorRelay<[Mail]>(value: [])
+    public let searchSubject = PublishSubject<String>()
     
     private let repository = MailRepository()
     private let disposeBag = DisposeBag()
@@ -52,6 +53,7 @@ class SearchViewController: UIViewController{
         setupDatePicker()
 
         fetchedMails
+            .catchError { _ in .empty() }
             .subscribe(
                 onNext: { [weak self] in
                     self?.filteredMails.accept($0)
@@ -98,21 +100,31 @@ class SearchViewController: UIViewController{
     }
 
     private func setupDatePicker() {
+        let mailsByDate = searchSubject
+            .withLatestFrom(fetchedMails) { ($0, $1) }
+            .map { (query, mails) in
+                mails.filter { $0.date == query }
+        }
+        searchSubject
+            .bind(to: searchBar.rx.text)
+            .disposed(by: disposeBag)
+        
+        mailsByDate
+            .bind(to: filteredMails)
+            .disposed(by: disposeBag)
+
         let datePickerContainerView = UIView(frame: .zero)
         datePickerContainerView.backgroundColor = .white
         let datePicker = UIDatePicker(frame: .zero)
         datePicker.datePickerMode = .date
         let searchButton = UIButton(frame: .zero)
         searchButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [searchSubject] in
                 datePickerContainerView.removeFromSuperview()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy/MM/dd"
                 let date = dateFormatter.string(from: datePicker.date)
-
-                let mailsByDate = self.fetchedMails.value
-                    .filter { $0.date == date }
-                self.filteredMails.accept(mailsByDate)
+                searchSubject.onNext(date)
             }).disposed(by: disposeBag)
         searchButton.setTitle("検索", for: .normal)
         searchButton.setTitleColor(.black, for: .normal)
