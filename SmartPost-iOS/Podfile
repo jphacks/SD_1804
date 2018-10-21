@@ -15,7 +15,7 @@ target 'NoName' do
 	pod 'FlexiblePageControl'
  	pod 'NVActivityIndicatorView'
   	pod 'PINCache'
-
+  	pod 'Cache'
   target 'NoNameTests' do
     inherit! :search_paths
     # Pods for testing

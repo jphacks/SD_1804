@@ -8,15 +8,26 @@
 
 import Foundation
 import RxSwift
-import PINCache
+import Cache
 
 class MailRepository {
     private let api = APIClient(configuration: .default)
+    private let cache: Storage<[String:Mail]> = {
+        let diskConfig = DiskConfig(name: "Floppy")
+        let memoryConfig = MemoryConfig(expiry: .never, countLimit: 10, totalCostLimit: 10)
+        let storage = try! Storage(
+            diskConfig: diskConfig,
+            memoryConfig: memoryConfig,
+            transformer: TransformerFactory.forCodable(ofType: [String:Mail].self)
+        )
+        return storage
+    }()
 
     func fetchAllMails() -> Observable<[Mail]> {
         let request = APIRequests.GetAllMailsRequest(userId: 1)
 
-        let cache = PINCache.shared().object(forKey: request.cacheKey) as? [Mail]
+        let cache = try? self.cache.object(forKey: request.cacheKey)
+            .map { $0.value }
 
         return api.response(from: request)
             .asObservable()

@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.3)
   - Blueprints (0.8.0)
+  - Cache (5.2.0)
   - FlexiblePageControl (1.0.7)
   - NVActivityIndicatorView (4.4.0):
     - NVActivityIndicatorView/Presenter (= 4.4.0)
@@ -17,6 +18,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Blueprints
+  - Cache
   - FlexiblePageControl
   - NVActivityIndicatorView
   - PINCache
@@ -29,6 +31,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Blueprints
+    - Cache
     - FlexiblePageControl
     - NVActivityIndicatorView
     - PINCache
@@ -41,6 +44,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Blueprints: bd8e23ee3b1ee9faa751ddb6e9cd82fef862ce9a
+  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   FlexiblePageControl: 2ce8446da3d75df6432dbad7b9e19151629dae62
   NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
   PINCache: ce36ed282031b92fc7733ffe831f474ff80fddc2
@@ -50,6 +54,6 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: f7486b46812fc9b4198cc439ce3ac0d5fb5d45a3
+PODFILE CHECKSUM: a9389effdb3e669cc53a365999c34b561a740f2b
 
 COCOAPODS: 1.5.3

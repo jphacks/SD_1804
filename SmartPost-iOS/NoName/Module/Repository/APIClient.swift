@@ -9,18 +9,29 @@
 import Foundation
 import RxSwift
 import Alamofire
-import PINCache
+import Cache
 
 class APIClient {
-    let baseURL: URL
-    let pathExtension: String
+    private let baseURL: URL
+    private let pathExtension: String
+    private let cache: Storage<Mail> = {
+        let diskConfig = DiskConfig(name: "Floppy")
+        let memoryConfig = MemoryConfig(expiry: .never, countLimit: 10, totalCostLimit: 10)
+        let storage = try! Storage(
+            diskConfig: diskConfig,
+            memoryConfig: memoryConfig,
+            transformer: TransformerFactory.forCodable(ofType: Mail.self)
+        )
+        return storage
+    }()
+
     public init(configuration: APIConfiguration = .default) {
         self.baseURL = configuration.baseURL
         self.pathExtension = configuration.pathExtension
     }
 
     public func response<Request>(from request: Request) -> Single<Request.Response>
-        where Request: APIRequest, Request.Response: Decodable {
+        where Request: APIRequest, Request.Response: Codable {
             return Single<Request.Response>.create { [unowned self] (emitter) -> Disposable in
 
                 let url = self.baseURL
@@ -40,10 +51,10 @@ class APIClient {
                         do {
                             let response = try JSONDecoder().decode(Request.Response.self, from: data)
 
-                            // CACHE FIXME
-//                            if let nsCodingResponse = response as? NSCoding {
-//                                self.saveCache(request: request, response: nsCodingResponse)
-//                            }
+                            // CACHE
+                            let transformer = TransformerFactory.forCodable(ofType: Request.Response.self)
+                            let storage = self.cache.transform(transformer: transformer)
+                            try! storage.setObject(response, forKey: request.cacheKey)
 
                             emitter(.success(response))
                         } catch {
@@ -54,10 +65,5 @@ class APIClient {
                 }
                 return Disposables.create()
             }
-    }
-
-    private func saveCache<Request>(request: Request, response: NSCoding)
-        where Request: APIRequest {
-        PINCache.shared().setObject(response, forKey: request.cacheKey)
     }
 }

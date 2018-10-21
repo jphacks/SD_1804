@@ -45,8 +45,8 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
     private func setupUI(mail: Mail) {
         let images = [mail.image1,mail.image2]
         scrollView.delegate = self
-        scrollView.frame = CGRect(x: 0, y: 0, width: mailImageView.frame.width, height: mailImageView.frame.height)
-        scrollView.center = mailImageView.center
+        scrollView.frame = mailImageView.bounds
+        scrollView.center = CGPoint(x: view.frame.width/2, y: mailImageView.center.y)
         scrollView.contentSize = CGSize(width: mailImageView.frame.width * CGFloat(numberOfPage), height: mailImageView.frame.height)
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numberOfPage
@@ -61,5 +61,9 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         dateLabel.text = "\(mail.date) \(mail.time)"
         nameLabel.text = mail.name
         fromLabel.text = mail.from
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
     }
 }
