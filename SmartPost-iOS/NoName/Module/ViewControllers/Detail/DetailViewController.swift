@@ -52,7 +52,6 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         scrollView.delegate = self
         scrollView.frame = mailImageView.bounds
         scrollView.center = CGPoint(x: view.frame.width/2, y: mailImageView.center.y)
-        scrollView.frame = mailImageView.frame
         scrollView.contentSize = CGSize(width: mailImageView.frame.width * CGFloat(numberOfPage), height: mailImageView.frame.height)
         scrollView.isPagingEnabled = true
         pageControl.numberOfPages = numberOfPage
