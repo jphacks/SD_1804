@@ -55,39 +55,84 @@ export const getImages = functions.https.onRequest((req, res) => {
     })
 });
 
-export const addImages = functions.https.onRequest((req, res) => {
+export const addImages = functions.https.onRequest(async (req, res) => {
     const date = new Date();
     const id = req.query.id;
     const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
     const time = `${date.getHours() + 9}:${date.getMinutes()}`;
     const from = 'amazon';
     const name = 'mac';
-    console.log("id", id)
-    // const src = req.body.src;
+    console.log("id", id);
+    const inInbox = true;
     const src1 = req.body.src1;
     const src2 = req.body.src2;
-    const inInbox = true;
     const type = req.body.type;
+    const endPoint = `https://vision.googleapis.com/v1/images:annotate?key=${functions.config().vision.key}`;
 
     try {
-
-        // Push the new message into the Realtime Database using the Firebase Admin SDK.
-        return admin.database().ref(`/users/${id}/images`).push({
-            date : today,
-            from,
-            name,
-            'src1': src1,
-            'src2': src2,
-            inInbox,
-            time,
-            type
-        }).then((snapshot) => {
-            // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
-            // return res.redirect(303, snapshot.ref.toString());
-            return res.status(200).send('SUCCESS！');
+        const rawResponse = await fetch(endPoint, {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                requests: [
+                    {
+                        image: {
+                            content: src1
+                        },
+                        "features": [
+                            {
+                                "type": "TEXT_DETECTION",
+                                "maxResults": 1
+                            }
+                        ]
+                    },
+                    {
+                        image: {
+                            content: src2
+                        },
+                        "features": [
+                            {
+                                "type": "TEXT_DETECTION",
+                                "maxResults": 1
+                            }
+                        ]
+                    }
+                ]
+            })
         })
+        const content = await rawResponse.json();
+        console.log("1: \n\n", content.responses[0], "2: \n\n", content.responses[1]);
+        try {
+
+            // Push the new message into the Realtime Database using the Firebase Admin SDK.
+            return admin.database().ref(`/users/1/images`).push({
+                date: today,
+                from,
+                name,
+                'src1': src1,
+                'src2': src2,
+                inInbox,
+                time,
+                type,
+                text1: content.responses[0].fullTextAnnotation.text,
+                text2: content.responses[1].fullTextAnnotation.text
+            }).then((snapshot) => {
+                // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
+                // return res.redirect(303, snapshot.ref.toString());
+                return res.status(200).send('SUCCESS！');
+            })
+        } catch (error) {
+            return res.status(404).send({ error, message: 'Not Found' })
+        }
+
     } catch (error) {
-        return res.status(404).send({ id, error, message: 'Not Found' })
+        // console.error(error)
+        console.error('ERROR:', error)
+        return res.status(404).send({ message: 'Not Found' })
     }
 });
 
@@ -101,15 +146,15 @@ export const takeOutPost = functions.https.onRequest((req, res) => {
             admin.database().ref(`/users/${id}/images`).update({
                 [`${k}/inInbox`]: false
             })
-            .catch(error => {
-                return res.status(404).send({ message: 'Not Found' })
-            })
+                .catch(error => {
+                    return res.status(404).send({ message: 'Not Found' })
+                })
         });
         return res.status(200).send('SUCCESS！');
     })
-    .catch(error => {
-        return res.status(404).send({ message: 'Not Found' })
-    })
+        .catch(error => {
+            return res.status(404).send({ message: 'Not Found' })
+        })
 });
 
 export const randomTakeInPost = functions.https.onRequest((req, res) => {
@@ -122,15 +167,15 @@ export const randomTakeInPost = functions.https.onRequest((req, res) => {
             admin.database().ref(`/users/${id}/images`).update({
                 [`${k}/inInbox`]: Math.floor(Math.random() * 2 + 1) === 1 ? true : false
             })
-            .catch(error => {
-                return res.status(404).send({ message: 'Not Found' })
-            })
+                .catch(error => {
+                    return res.status(404).send({ message: 'Not Found' })
+                })
         });
         return res.status(200).send('SUCCESS！');
     })
-    .catch(error => {
-        return res.status(404).send({ message: 'Not Found' })
-    })
+        .catch(error => {
+            return res.status(404).send({ message: 'Not Found' })
+        })
 });
 
 export const registerAddress = functions.https.onRequest((req, res) => {
@@ -151,15 +196,27 @@ export const ocrParse = functions.https.onRequest(async (req, res) => {
     // const id = req.query.id;
     const src1 = req.body.src1;
     const src2 = req.body.src2;
-    // console.log(req.body.src)
-    const endPoint =`https://vision.googleapis.com/v1/images:annotate?key=${functions.config().vision.key}`;
+    const endPoint = `https://vision.googleapis.com/v1/images:annotate?key=${functions.config().vision.key}`;
+    // const endPoint = `https://vision.googleapis.com/v1/images:annotate?key=${apikey}`;
+    // const id = req.query.id;
+    // const endPoint = `https://vision.googleapis.com/v1/images:annotate?key=${functions.config().vision.key}`;
+    const date = new Date();
+    const id = req.query.id;
+    const today = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    const time = `${date.getHours() + 9}:${date.getMinutes()}`;
+    const from = 'amazon';
+    const name = 'mac';
+    console.log("id", id);
+    const inInbox = true;
+    const type = req.body.type;
+
     try {
         const rawResponse = await fetch(endPoint, {
             method: "POST",
             mode: "cors",
             headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 requests: [
@@ -191,7 +248,29 @@ export const ocrParse = functions.https.onRequest(async (req, res) => {
         const content = await rawResponse.json();
         // console.log({content})
         console.log("1: \n\n", content.responses[0], "2: \n\n", content.responses[1]);
-        return res.status(200).send("OK")
+        // return res.status(200).send("1:" + content.responses[0].fullTextAnnotation.text + "\n2: " + content.responses[1].fullTextAnnotation.text)
+        try {
+
+            // Push the new message into the Realtime Database using the Firebase Admin SDK.
+            return admin.database().ref(`/users/1/images`).push({
+                date: today,
+                from,
+                name,
+                'src1': src1,
+                'src2': src2,
+                inInbox,
+                time,
+                type,
+                text1: content.responses[0].fullTextAnnotation.text,
+                text2: content.responses[1].fullTextAnnotation.text
+            }).then((snapshot) => {
+                // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
+                // return res.redirect(303, snapshot.ref.toString());
+                return res.status(200).send('SUCCESS！');
+            })
+        } catch (error) {
+            return res.status(404).send({error, message: 'Not Found' })
+        }
 
     } catch (error) {
         // console.error(error)
