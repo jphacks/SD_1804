@@ -20,6 +20,7 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
     }
 
     @IBOutlet private weak var mailImageView: UIView!
+    @IBOutlet weak var descriptionViews: UIScrollView!
     @IBOutlet private weak var flagLabel: UILabel! {
         didSet {
             flagLabel.layer.cornerRadius = flagLabel.frame.height / 2.0
@@ -72,6 +73,22 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         dateLabel.isUserInteractionEnabled = true
         nameLabel.text = mail.name
         fromLabel.text = mail.from
+        
+        //
+        descriptionViews.delegate = self
+        descriptionViews.frame = view.bounds
+        descriptionViews.center = view.center
+        descriptionViews.isPagingEnabled = true
+        descriptionViews.contentSize = CGSize(width: view.frame.width * CGFloat(2), height: view.frame.height)
+        let v1 = self.view
+        let v2 = self.view
+        descriptionViews.addSubview(v1!)
+        descriptionViews.addSubview(v2!)
+        //
+        
+        
+        
+        
     }
 
     private func bindUI() {

@@ -58,10 +58,10 @@ class APIClient {
 
                             emitter(.success(response))
                         } catch {
-                            emitter(.error(error))
+                            //emitter(.error(error))
                         }
                     }
-                    emitter(.error(AppError.unknown))
+                    //emitter(.error(AppError.unknown))
                 }
                 return Disposables.create()
             }
