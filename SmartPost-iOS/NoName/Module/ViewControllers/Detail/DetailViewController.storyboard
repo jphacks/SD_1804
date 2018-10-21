@@ -51,13 +51,13 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/20 6:48" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpO-m5-1BE">
-                                        <rect key="frame" x="275.5" y="102" width="79.5" height="14"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="14"/>
+                                        <rect key="frame" x="269.5" y="102" width="85.5" height="14"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="002-calendar-with-spring-binder-and-date-blocks" translatesAutoresizingMaskIntoConstraints="NO" id="mcK-qr-R4F">
-                                        <rect key="frame" x="251.5" y="101" width="16" height="16"/>
+                                        <rect key="frame" x="245.5" y="101" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="16" id="XFG-yu-opz"/>
                                             <constraint firstAttribute="height" constant="16" id="tTc-N1-UO9"/>

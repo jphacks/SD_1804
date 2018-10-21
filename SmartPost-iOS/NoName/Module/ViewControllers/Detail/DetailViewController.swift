@@ -62,8 +62,13 @@ class DetailViewController: UIViewController,UIScrollViewDelegate {
         }
         mailImageView.addSubview(scrollView)
         flagLabel.backgroundColor = mail.inInbox ? .red : .gray
-        flagLabel.text = mail.inInbox ? "未読" : "既読"
-        dateLabel.text = "\(mail.date) \(mail.time)"
+        flagLabel.text = mail.inInbox ? "#未読" : "#既読"
+        dateLabel.attributedText = NSAttributedString(
+            string: "\(mail.date) \(mail.time)",
+            attributes: [NSAttributedString.Key.underlineColor: UIColor.black,
+                         NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                         NSAttributedString.Key.kern: 1.5]
+        )
         dateLabel.isUserInteractionEnabled = true
         nameLabel.text = mail.name
         fromLabel.text = mail.from
